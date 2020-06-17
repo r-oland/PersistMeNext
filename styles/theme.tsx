@@ -1,4 +1,15 @@
-export const theme = {
+import { DefaultTheme } from "styled-components";
+
+const mediaQuery = (minWidth: number) => `@media (min-width: ${minWidth}px)`;
+
+const fontSize = (small: number, big: number) =>
+  `font-size: ${small}px;
+
+  ${mediaQuery(768)} {
+     font-size: ${big}px; 
+  }`;
+
+export const theme: DefaultTheme = {
   gray: [
     "rgba(255, 255, 255, 1)",
     "rgba(250, 250, 250, 1)",
@@ -62,72 +73,23 @@ export const theme = {
     bold: "600",
     heavy: "700",
   },
-  breakPoint: {
-    mobile: "400px",
-    tablet: "768px",
-    desktopS: "900px",
-    desktopM: "1200px",
-    desktopL: "1600px",
+  mediaQ: {
+    custom: mediaQuery,
+    mobile: mediaQuery(400),
+    tablet: mediaQuery(768),
+    desktopS: mediaQuery(900),
+    desktopM: mediaQuery(1200),
+    desktopL: mediaQuery(1600),
   },
   fontSize: {
-    xs: `
-    font-size: 14px;
-    `,
-    s: `
-    font-size: 15px;
-    
-    @media screen and (min-width: 768px) {
-     font-size: 16px; 
-    }
-    `,
-    m: `
-    font-size: 16px;
-    
-    @media screen and (min-width: 768px) {
-     font-size: 17px; 
-    }
-    `,
-    l: `
-    font-size: 17px;
-    
-    @media screen and (min-width: 768px) {
-     font-size: 18px; 
-    }
-    `,
-    xl: `
-    font-size: 19px;
-    
-    @media screen and (min-width: 768px) {
-     font-size: 22px; 
-    }
-    `,
-    h4: `
-    font-size: 22px;
-    
-    @media screen and (min-width: 768px) {
-     font-size: 25px; 
-    }
-    `,
-    h3: `
-    font-size: 24px;
-    
-    @media screen and (min-width: 768px) {
-     font-size: 28px; 
-    }
-    `,
-    h2: `
-    font-size: 26px;
-    
-    @media screen and (min-width: 768px) {
-     font-size: 35px; 
-    }
-    `,
-    h1: `
-    font-size: 30px;
-    
-    @media screen and (min-width: 768px) {
-     font-size: 45px; 
-    }
-    `,
+    xs: fontSize(14, 14),
+    s: fontSize(15, 16),
+    m: fontSize(16, 17),
+    l: fontSize(17, 18),
+    xl: fontSize(19, 22),
+    h4: fontSize(22, 25),
+    h3: fontSize(24, 28),
+    h2: fontSize(26, 35),
+    h1: fontSize(30, 45),
   },
 };
