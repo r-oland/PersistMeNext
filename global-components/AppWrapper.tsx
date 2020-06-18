@@ -1,6 +1,7 @@
 import { ThemeProvider } from "styled-components";
 import GlobalStyles from "../styles/GlobalStyles";
 import { theme } from "../styles/theme";
+import UserContextComp from "./firebase/useUser";
 import Layout from "./Layout";
 
 type props = {
@@ -9,9 +10,11 @@ type props = {
 
 export default function AppWrapper({ children }: props) {
   return (
-    <ThemeProvider theme={theme}>
-      <Layout>{children}</Layout>
-      <GlobalStyles />
-    </ThemeProvider>
+    <UserContextComp>
+      <ThemeProvider theme={theme}>
+        <Layout>{children}</Layout>
+        <GlobalStyles />
+      </ThemeProvider>
+    </UserContextComp>
   );
 }

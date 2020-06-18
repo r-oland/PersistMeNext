@@ -1,7 +1,7 @@
 {
   "files.exclude": {
     ".next": true,
-    ".env": true,
+    ".env.local": true,
     "node_modules": true,
     ".gitignore": true,
     "desktop.ini": true,
