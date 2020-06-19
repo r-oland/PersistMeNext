@@ -4,6 +4,8 @@ import firebase from "./client";
 type user = {
   uid: string;
   username: string;
+  email: string | null;
+  subscriptionDate: object;
 };
 
 type contextProps = {
@@ -28,7 +30,9 @@ export default function UserContextComp({ children }: props) {
       try {
         if (user) {
           // User is signed in.
-          const { uid } = user;
+          const { uid, email } = user;
+
+          setUser({ uid, email, username: "loading", subscriptionDate: {} });
 
           await firebase
             .firestore()
@@ -37,8 +41,12 @@ export default function UserContextComp({ children }: props) {
             .get()
             .then((r) =>
               r.forEach((data) => {
-                const { username } = data.data();
-                setUser({ uid, username });
+                const { username, subscriptionDate } = data.data();
+                setUser((prev: any) => ({
+                  ...prev,
+                  username,
+                  subscriptionDate,
+                }));
               })
             );
         } else setUser(null);

@@ -21,21 +21,9 @@ const Wrapper = styled.div`
 
 type props = {};
 
-const MobileActivityPicker = () => {
+export default function MobileNavItems({}: props) {
   const { pathname } = useRouter();
 
-  return pathname === "/" ? (
-    <ActivityPicker />
-  ) : (
-    <Link href="/">
-      <a>
-        <ActivityPicker />
-      </a>
-    </Link>
-  );
-};
-
-export default function MobileNavItems({}: props) {
   return (
     <Wrapper>
       <Link href="/progress">
@@ -43,7 +31,15 @@ export default function MobileNavItems({}: props) {
           <img src="/navMobile/progress.svg" alt="progress" />
         </a>
       </Link>
-      <MobileActivityPicker />
+      {pathname === "/" ? (
+        <ActivityPicker />
+      ) : (
+        <Link href="/">
+          <a>
+            <img src="/navMobile/calendar.svg" alt="progress" />
+          </a>
+        </Link>
+      )}
       <Link href="/settings">
         <a>
           <img src="/navMobile/settings.svg" alt="settings" />

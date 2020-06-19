@@ -25,6 +25,10 @@ const Wrapper = styled.div`
     border-radius: ${({ theme: { borderRadius } }) => borderRadius};
     box-shadow: ${({ theme: { shadow } }) => shadow.xs};
   }
+
+  h2 {
+    margin-bottom: ${({ theme: { spacing } }) => spacing[1]};
+  }
 `;
 
 type props = {

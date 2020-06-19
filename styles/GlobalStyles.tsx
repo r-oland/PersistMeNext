@@ -14,7 +14,7 @@ const GlobalStyles = createGlobalStyle`
 
       input, select, textarea, label{
       font-family: 'Raleway', sans-serif;
-         font-size: 14px;
+      ${({ theme: { fontSize } }) => fontSize.m}
       }
    }
 

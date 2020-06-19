@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext } from "react";
 import { ThemeProvider } from "styled-components";
 import { useMediaQ } from "../micro-components/useMediaQ";
 import GlobalStyles from "../styles/GlobalStyles";
@@ -10,16 +10,14 @@ type props = {
   children: React.ReactNode;
 };
 
-export const QueryContext = createContext({ hydrate: false, query: false });
+export const QueryContext = createContext({ query: false });
 
 export default function AppWrapper({ children }: props) {
   const query = useMediaQ("min", 900);
-  const [hydrate, setHydrate] = useState(false);
-  useEffect(() => setHydrate(true), []);
 
   return (
     <UserContextComp>
-      <QueryContext.Provider value={{ hydrate, query }}>
+      <QueryContext.Provider value={{ query }}>
         <ThemeProvider theme={theme}>
           <Layout>{children}</Layout>
           <GlobalStyles />

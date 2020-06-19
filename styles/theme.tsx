@@ -69,8 +69,8 @@ export const theme: DefaultTheme = {
     l: fontSize(17, 18),
     xl: fontSize(19, 22),
     h4: fontSize(22, 25),
-    h3: fontSize(24, 28),
-    h2: fontSize(26, 35),
+    h2: fontSize(27.5, 28),
+    h3: fontSize(26, 35),
     h1: fontSize(30, 45),
   },
 };

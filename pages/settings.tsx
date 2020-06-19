@@ -1,10 +1,21 @@
 // Components==============
 import Head from "next/head";
 import styled from "styled-components";
+import User from "../macro-settings/User";
 import Modal from "../micro-components/Modal";
+import { Container } from "../styles/mixins";
 // =========================
 
-const Wrapper = styled.div``;
+const Wrapper = styled(Container)``;
+
+const SubTitle = styled.p`
+  ${({ theme: { fontSize } }) => fontSize.l}
+  font-weight: ${({ theme: { fontWeight } }) => fontWeight.semiBold};
+  color: ${({ theme: { color } }) => color.gray};
+  border-bottom: 1px solid ${({ theme: { color } }) => color.gray};
+  margin-bottom: ${({ theme: { spacing } }) => spacing[1]};
+  width: 75%;
+`;
 
 type props = {};
 
@@ -16,7 +27,9 @@ export default function settings({}: props) {
       </Head>
       <Wrapper>
         <Modal>
-          <p>test</p>
+          <h2>Settings</h2>
+          <SubTitle>User</SubTitle>
+          <User />
         </Modal>
       </Wrapper>
     </>

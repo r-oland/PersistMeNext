@@ -29,6 +29,7 @@ export default function AuthComp({}: props) {
 
   return (
     <Modal>
+      {displayedForm === "login" ? <h2>Login</h2> : <h2>Register</h2>}
       {displayedForm === "login" ? <LoginForm /> : <RegisterForm />}
       <Flex>
         {displayedForm === "login" ? (

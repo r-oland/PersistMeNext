@@ -6,8 +6,8 @@
     ".gitignore": true,
     "desktop.ini": true,
     "package-lock.json": true,
-    // "package.json": true,
-    // ".babelrc": true,
+    "package.json": true,
+    ".babelrc": true,
     "next-env.d.ts": true,
     "tsconfig.json": true
   },

@@ -2,7 +2,6 @@
 import { useRouter } from "next/dist/client/router";
 import Link from "next/link";
 import styled from "styled-components";
-import { useUser } from "../firebase/useUser";
 // =========================
 
 const Wrapper = styled.div`
@@ -28,21 +27,17 @@ type props = {};
 
 export default function DesktopNavItems({}: props) {
   const { pathname } = useRouter();
-  const { user } = useUser();
 
   const dailyView = pathname === "/";
   const weeklyView = pathname === "/week";
 
-  const conName = dailyView || weeklyView ? "Change view" : "Overview";
+  const conName = dailyView ? "Weekly" : weeklyView ? "Daily" : "Overview";
   const conLink = dailyView ? "/week" : "/";
-  const conName2 = user ? user.username : "Login";
-  const conLink2 = user ? "/profile" : "/login";
 
   const arr = [
     { name: conName, svg: "calendar", link: conLink },
     { name: "Progress", svg: "progress", link: "/progress" },
     { name: "Settings", svg: "settings", link: "/settings" },
-    { name: conName2, svg: "login", link: conLink2 },
   ];
 
   const items = arr.map((e, index) => {

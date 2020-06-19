@@ -7,19 +7,18 @@ export const Form = styled.form`
   label {
     display: block;
     font-weight: ${({ theme: { fontWeight } }) => fontWeight.bold};
-    margin-bottom: ${({ theme: { spacing } }) => spacing[1]};
+    margin-bottom: ${({ theme: { spacing } }) => spacing[0]};
     ${({ theme: { fontSize } }) => fontSize.m}
   }
 
   input {
     display: block;
     border: none;
-    padding-bottom: ${({ theme: { spacing } }) => spacing[0]};
-    margin-bottom: ${({ theme: { spacing } }) => spacing[4]};
+    margin-bottom: ${({ theme: { spacing } }) => spacing[3]};
     border-bottom: solid 1px ${({ theme: { color } }) => color.gray};
     width: 100%;
     background: none;
-    ${({ theme: { fontSize } }) => fontSize.m}
+    ${({ theme: { fontSize } }) => fontSize.s}
   }
 
   button {
