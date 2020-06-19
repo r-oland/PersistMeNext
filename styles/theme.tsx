@@ -10,32 +10,13 @@ const fontSize = (small: number, big: number) =>
   }`;
 
 export const theme: DefaultTheme = {
-  gray: [
-    "rgba(255, 255, 255, 1)",
-    "rgba(250, 250, 250, 1)",
-    "rgba(237, 237, 237, 1)",
-    "rgba(227, 227, 227, 1)",
-    "rgba(217, 217, 217, 1)",
-    "rgba(204, 204, 204, 1)",
-    "rgba(192, 192, 192, 1)",
-    "rgba(176, 176, 176, 1)",
-    "rgba(153, 153, 153, 1)",
-    "rgba(128, 128, 128, 1)",
-    "rgba(114, 114, 114, 1)",
-    "rgba(105, 105, 105, 1)",
-    "rgba(77, 77, 77, 1)",
-    "rgba(54, 54, 54, 1)",
-    "rgba(33, 33, 33, 1)",
-  ],
-  primary: [
-    " rgba(255, 207, 63, 1)",
-    "rgba(255, 196, 53, 1)",
-    "rgba(255, 185, 42, 1)",
-    "rgba(255, 174, 32, 1)",
-    "rgba(255, 162, 21, 1)",
-    "rgba(255, 151, 11, 1)",
-    "rgba(255, 140, 0, 1)",
-  ],
+  color: {
+    primary: "#FDC61A",
+    black: "#1A1A1A",
+    white: "#FFFFFF",
+    offWhite: "#FAFAFA",
+    gray: "#484848",
+  },
   shadow: {
     xs: "0 1px 3px rgba(0, 0, 0, 0.1)",
     s: "0 1px 3px rgba(0, 0, 0, 0.2)",

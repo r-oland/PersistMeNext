@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Nav from "./Nav";
 
 const Wrapper = styled.div``;
 
@@ -7,5 +8,10 @@ type props = {
 };
 
 export default function Layout({ children }: props) {
-  return <Wrapper>{children}</Wrapper>;
+  return (
+    <Wrapper>
+      <Nav />
+      {children}
+    </Wrapper>
+  );
 }

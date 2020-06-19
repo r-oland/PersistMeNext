@@ -10,7 +10,7 @@ const GlobalStyles = createGlobalStyle`
    
    html {
       font-family: 'Raleway', sans-serif;
-      background-color: ${({ theme: { gray } }) => gray[1]};
+      background: ${({ theme: { color } }) => color.offWhite};
 
       input, select, textarea, label{
       font-family: 'Raleway', sans-serif;
@@ -20,7 +20,7 @@ const GlobalStyles = createGlobalStyle`
 
 
    body {
-      color: ${({ theme: { gray } }) => gray[14]};
+      color: ${({ theme: { color } }) => color.black};
    }
 
    #gatsby-focus-wrapper{
@@ -106,7 +106,7 @@ const GlobalStyles = createGlobalStyle`
 
    button {
       background: none;
-      color: ${({ theme: { gray } }) => gray[14]};
+      color: ${({ theme: { color } }) => color.black};
       border: none;
       padding: 0;
       cursor: pointer;
@@ -132,7 +132,7 @@ const GlobalStyles = createGlobalStyle`
    }
 
    a {
-      color: ${({ theme: { gray } }) => gray[14]};
+      color: ${({ theme: { color } }) => color.black};
       text-decoration: none;
    }
 

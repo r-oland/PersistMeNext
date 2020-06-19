@@ -3,7 +3,11 @@ import Head from "next/head";
 import styled from "styled-components";
 // =========================
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  img {
+    width: 800px;
+  }
+`;
 
 type props = {};
 

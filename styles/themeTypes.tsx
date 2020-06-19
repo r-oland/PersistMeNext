@@ -1,5 +1,13 @@
 import "styled-components";
 
+type color = {
+  primary: string;
+  black: string;
+  white: string;
+  offWhite: string;
+  gray: string;
+};
+
 type shadow = {
   xs: string;
   s: string;
@@ -38,8 +46,7 @@ type fontSize = {
 
 declare module "styled-components" {
   export interface DefaultTheme {
-    gray: string[];
-    primary: string[];
+    color: color;
     shadow: shadow;
     spacing: string[];
     borderRadius: string;
