@@ -1,15 +1,13 @@
 // Components==============
 import firebase from "firebase/app";
 import { useState } from "react";
-import styled from "styled-components";
-import { useUser } from "../../global-components/firebase/useUser";
+import { useUser } from "../global-components/firebase/useUser";
+import { Form } from "./FormStyling";
 // =========================
-
-const Wrapper = styled.form``;
 
 type props = {};
 
-export default function Form({}: props) {
+export default function LoginForm({}: props) {
   const [formValues, setformValues] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
   const { user } = useUser();
@@ -21,7 +19,7 @@ export default function Form({}: props) {
       firebase
         .auth()
         .signInWithEmailAndPassword(formValues.email, formValues.password)
-        .catch((error) => setError(error));
+        .catch((error) => setError(error.message));
     }
   };
 
@@ -36,25 +34,27 @@ export default function Form({}: props) {
   };
 
   return (
-    <Wrapper onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit}>
       <p>{error}</p>
+      <label>Email</label>
       <input
         value={formValues.email}
         type="email"
         name="email"
-        placeholder="email"
+        placeholder="myemail@example.com"
         onChange={handleInputChange}
         required
       />
+      <label>Password</label>
       <input
         value={formValues.password}
         type="password"
         name="password"
-        placeholder="password"
+        placeholder="********"
         onChange={handleInputChange}
         required
       />
       <button type="submit">login</button>
-    </Wrapper>
+    </Form>
   );
 }

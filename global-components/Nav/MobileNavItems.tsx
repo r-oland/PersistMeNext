@@ -6,7 +6,7 @@ import ActivityPicker from "../../micro-components/ActivityPicker";
 // =========================
 
 const Wrapper = styled.div`
-  ${({ theme: { mediaQ } }) => mediaQ.tablet} {
+  ${({ theme: { mediaQ } }) => mediaQ.desktopS} {
     display: none;
   }
 

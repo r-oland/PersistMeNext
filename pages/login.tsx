@@ -1,17 +1,26 @@
 // Components==============
+import { useRouter } from "next/dist/client/router";
 import Head from "next/head";
+import { useEffect } from "react";
 import styled from "styled-components";
 import { useUser } from "../global-components/firebase/useUser";
-import Form from "../macro-login/login/Form";
-import Register from "../macro-login/register/Form";
+import AuthComp from "../macro-login";
+import { Container } from "../styles/mixins";
 // =========================
 
-const Wrapper = styled.div``;
+const Wrapper = styled(Container)``;
 
 type props = {};
 
 export default function login({}: props) {
   const { user } = useUser();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (user) {
+      router.push("/");
+    }
+  }, [user]);
 
   return (
     <>
@@ -19,9 +28,7 @@ export default function login({}: props) {
         <title>Home</title>
       </Head>
       <Wrapper>
-        {user?.username}
-        <Form />
-        <Register />
+        <AuthComp />
       </Wrapper>
     </>
   );

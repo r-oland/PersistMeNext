@@ -1,15 +1,13 @@
 // Components==============
 import firebase from "firebase/app";
 import { useState } from "react";
-import styled from "styled-components";
-import { useUser } from "../../global-components/firebase/useUser";
+import { useUser } from "../global-components/firebase/useUser";
+import { Form } from "./FormStyling";
 // =========================
-
-const Wrapper = styled.form``;
 
 type props = {};
 
-export default function Form({}: props) {
+export default function RegisterForm({}: props) {
   const [formValues, setformValues] = useState({
     email: "",
     password: "",
@@ -33,7 +31,7 @@ export default function Form({}: props) {
             .httpsCallable("createUserDoc");
           return createUserDoc(formValues.username);
         })
-        .catch((error) => setError(error));
+        .catch((error) => setError(error.message));
     } else {
       setError("The passwords do not match");
     }
@@ -50,43 +48,47 @@ export default function Form({}: props) {
   };
 
   return (
-    <Wrapper onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit}>
       <p>{error}</p>
+      <label>Username</label>
       <input
         value={formValues.username}
         type="username"
         name="username"
-        placeholder="username"
+        placeholder="coolname77 "
         onChange={handleInputChange}
         required
       />
+      <label>Email</label>
       <input
         value={formValues.email}
         type="email"
         name="email"
-        placeholder="email"
+        placeholder="coolname77@example.com"
         onChange={handleInputChange}
         required
       />
+      <label>Password</label>
       <input
         value={formValues.password}
         type="password"
         name="password"
-        placeholder="password"
+        placeholder="********"
         onChange={handleInputChange}
         required
         minLength={6}
       />
+      <label>Confirm password</label>
       <input
         value={formValues.confirmPassword}
         type="password"
         name="confirmPassword"
-        placeholder="confirm password"
+        placeholder="********"
         onChange={handleInputChange}
         required
         minLength={6}
       />
       <button type="submit">Register</button>
-    </Wrapper>
+    </Form>
   );
 }

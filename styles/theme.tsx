@@ -47,7 +47,7 @@ export const theme: DefaultTheme = {
     "30em",
     "48em",
   ],
-  borderRadius: "5px",
+  borderRadius: "3px",
   fontWeight: {
     normal: "400",
     semiBold: "500",

@@ -2,11 +2,12 @@
 import { useRouter } from "next/dist/client/router";
 import Link from "next/link";
 import styled from "styled-components";
+import { useUser } from "../firebase/useUser";
 // =========================
 
 const Wrapper = styled.div`
   display: none;
-  ${({ theme: { mediaQ } }) => mediaQ.tablet} {
+  ${({ theme: { mediaQ } }) => mediaQ.desktopS} {
     display: initial;
   }
   position: relative;
@@ -27,26 +28,29 @@ type props = {};
 
 export default function DesktopNavItems({}: props) {
   const { pathname } = useRouter();
+  const { user } = useUser();
 
   const dailyView = pathname === "/";
   const weeklyView = pathname === "/week";
 
-  const conName = dailyView || weeklyView ? "Change view" : "Tracker";
-  const conLink = dailyView ? "weekly" : "/";
+  const conName = dailyView || weeklyView ? "Change view" : "Overview";
+  const conLink = dailyView ? "/week" : "/";
+  const conName2 = user ? user.username : "Login";
+  const conLink2 = user ? "/profile" : "/login";
 
   const arr = [
-    { name: "Login", svg: "login", link: "/login" },
     { name: conName, svg: "calendar", link: conLink },
     { name: "Progress", svg: "progress", link: "/progress" },
-    { name: "Settings", svg: "settings", link: "settings" },
+    { name: "Settings", svg: "settings", link: "/settings" },
+    { name: conName2, svg: "login", link: conLink2 },
   ];
 
   const items = arr.map((e, index) => {
     const { name, svg, link } = e;
 
     return (
-      <Item>
-        <Link href={link} key={index}>
+      <Item key={index}>
+        <Link href={link}>
           <a>
             <img src={`/navDesktop/${svg}.svg`} alt={name} />
             <p>{name}</p>

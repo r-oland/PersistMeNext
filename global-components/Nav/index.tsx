@@ -13,7 +13,7 @@ const Wrapper = styled.div`
   background: ${({ theme: { color } }) => color.white};
   box-shadow: ${({ theme: { shadow } }) => shadow.l};
 
-  ${({ theme: { mediaQ } }) => mediaQ.tablet} {
+  ${({ theme: { mediaQ } }) => mediaQ.desktopS} {
     width: ${({ theme: { spacing } }) => spacing[13]};
     height: 100%;
     box-shadow: ${({ theme: { shadow } }) => shadow.m};
