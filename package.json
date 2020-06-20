@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "next dev -H 192.168.2.146 -p 8001",
+    "localhost": "next dev ",
+    "start": "next dev -H 192.168.2.146 -p 8000",
     "build": "next build",
     "serve": "next start"
   },

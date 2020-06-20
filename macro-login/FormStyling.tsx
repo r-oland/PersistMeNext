@@ -20,13 +20,4 @@ export const Form = styled.form`
     background: none;
     ${({ theme: { fontSize } }) => fontSize.s}
   }
-
-  button {
-    background: ${({ theme: { color } }) => color.primary};
-    padding: ${({ theme: { spacing } }) => `${spacing[0]} ${spacing[3]}`};
-    font-weight: ${({ theme: { fontWeight } }) => fontWeight.bold};
-    border-radius: ${({ theme: { borderRadius } }) => borderRadius};
-    width: ${({ theme: { spacing } }) => spacing[12]};
-    ${({ theme: { fontSize } }) => fontSize.l}
-  }
 `;

@@ -16,6 +16,9 @@ const clientCredentials = {
 // Check that `window` is in scope for the analytics module!
 if (typeof window !== "undefined" && !firebase.apps.length) {
   firebase.initializeApp(clientCredentials);
+  // firebase.functions().useFunctionsEmulator("http://localhost:5001");
+  // firebase.firestore().settings({ host: "localhost:8080", ssl: false });
+
   // To enable analytics. https://firebase.google.com/docs/analytics/get-started
   //   if ('measurementId' in clientCredentials) firebase.analytics()
 }

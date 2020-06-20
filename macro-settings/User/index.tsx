@@ -1,4 +1,5 @@
 // Components==============
+import firebase from "firebase/app";
 import { useState } from "react";
 import styled from "styled-components";
 import { useUser } from "../../global-components/firebase/useUser";
@@ -7,7 +8,7 @@ import Buttons from "./Buttons";
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: 100px 1fr;
+  grid-template-columns: 75px 1fr;
   margin-bottom: ${({ theme: { spacing } }) => spacing[1]};
 
   input {
@@ -24,10 +25,11 @@ function Fields() {
   const { user } = useUser();
   const [saveBtn, setSaveBtn] = useState(false);
 
-  const fields = ["username", "email"];
+  const fields = ["name", "email"];
   const [formFields, setFormFields]: any = useState({
-    username: user?.username,
+    name: user?.name,
     email: user?.email,
+    uid: user?.uid,
   });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -54,7 +56,9 @@ function Fields() {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    console.log(formFields);
+
+    const updateUserDoc = firebase.functions().httpsCallable("updateUserDoc");
+    return updateUserDoc(formFields);
   };
 
   return (
@@ -67,7 +71,7 @@ function Fields() {
 
 export default function User() {
   const { user } = useUser();
-  const goodToGo = user?.username && user?.username !== "loading";
+  const ready = user?.name && user?.name !== "loading";
 
-  return goodToGo ? <Fields /> : <></>;
+  return ready ? <Fields /> : <></>;
 }

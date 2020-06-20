@@ -1,0 +1,38 @@
+## auth
+
+\*Validate if user exists on email update
+\*change password
+\*safety rules?
+Confirmation emails
+third party log in services
+
+## UI
+
+animations nav elements
+animations buttons
+styling error messages login
+
+## main
+
+\*code ui components
+\*figure out a date formatting solution - day
+\*figure out a date formatting solution - week
+\*add database structure
+\*optimize listener in ui
+\*code color picker
+\*add daytype selector
+
+## progress
+
+\*add a work in progress page
+add data visualization
+add option to export
+
+## settings
+
+\*link color picker options
+add daytype options
+
+## general
+
+add informational home page

@@ -1,9 +1,10 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import firebase from "./client";
+import { getUserProfile } from "./getUserProfile";
 
 type user = {
   uid: string;
-  username: string;
+  name: string;
   email: string | null;
   subscriptionDate: object;
 };
@@ -25,40 +26,40 @@ export default function UserContextComp({ children }: props) {
   const [loadingUser, setLoadingUser] = useState(true); // Helpful, to update the UI accordingly.
 
   useEffect(() => {
+    let unsubscribe: any;
+    let userUnsubscribe: any;
     // Listen authenticated user
-    const unsubscriber = firebase.auth().onAuthStateChanged(async (user) => {
+    unsubscribe = firebase.auth().onAuthStateChanged(async (user) => {
       try {
         if (user) {
           // User is signed in.
           const { uid, email } = user;
 
-          setUser({ uid, email, username: "loading", subscriptionDate: {} });
-
-          await firebase
-            .firestore()
-            .collection(`users`)
-            .where("userId", "==", uid)
-            .get()
-            .then((r) =>
-              r.forEach((data) => {
-                const { username, subscriptionDate } = data.data();
-                setUser((prev: any) => ({
-                  ...prev,
-                  username,
-                  subscriptionDate,
-                }));
-              })
-            );
-        } else setUser(null);
+          userUnsubscribe = getUserProfile(uid, (r) => {
+            const { name, subscriptionDate } = r.data();
+            setUser((prev: any) => ({
+              ...prev,
+              uid,
+              email,
+              name,
+              subscriptionDate,
+            }));
+            setLoadingUser(false);
+          });
+        } else {
+          setUser(null);
+          setLoadingUser(false);
+        }
       } catch (error) {
         console.log(error);
-      } finally {
-        setLoadingUser(false);
       }
     });
 
-    // Unsubscribe auth listener on unmount
-    return () => unsubscriber();
+    // Unsubscribe listeners on unmount
+    return () => {
+      if (unsubscribe) unsubscribe();
+      if (userUnsubscribe) userUnsubscribe();
+    };
   }, []);
 
   return (

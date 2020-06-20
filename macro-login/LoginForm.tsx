@@ -2,6 +2,7 @@
 import firebase from "firebase/app";
 import { useState } from "react";
 import { useUser } from "../global-components/firebase/useUser";
+import { Button } from "../styles/mixins";
 import { Form } from "./FormStyling";
 // =========================
 
@@ -54,7 +55,7 @@ export default function LoginForm({}: props) {
         onChange={handleInputChange}
         required
       />
-      <button type="submit">login</button>
+      <Button type="submit">login</Button>
     </Form>
   );
 }

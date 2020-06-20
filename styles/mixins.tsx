@@ -21,3 +21,15 @@ export const Container = styled.div`
     max-width: 130rem;
   }
 `;
+
+// Button
+
+export const Button = styled.button`
+  background: ${({ theme: { color } }) => color.primary};
+  border: 2px solid ${({ theme: { color } }) => color.primary};
+  padding: ${({ theme: { spacing } }) => `${spacing[0]} ${spacing[3]}`};
+  font-weight: ${({ theme: { fontWeight } }) => fontWeight.bold};
+  border-radius: ${({ theme: { borderRadius } }) => borderRadius};
+  width: ${({ theme: { spacing } }) => spacing[12]};
+  ${({ theme: { fontSize } }) => fontSize.l}
+`;

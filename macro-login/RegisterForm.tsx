@@ -2,6 +2,7 @@
 import firebase from "firebase/app";
 import { useState } from "react";
 import { useUser } from "../global-components/firebase/useUser";
+import { Button } from "../styles/mixins";
 import { Form } from "./FormStyling";
 // =========================
 
@@ -12,7 +13,7 @@ export default function RegisterForm({}: props) {
     email: "",
     password: "",
     confirmPassword: "",
-    username: "",
+    name: "",
   });
   const { user } = useUser();
   const [error, setError] = useState("");
@@ -29,7 +30,7 @@ export default function RegisterForm({}: props) {
           const createUserDoc = firebase
             .functions()
             .httpsCallable("createUserDoc");
-          return createUserDoc(formValues.username);
+          return createUserDoc(formValues);
         })
         .catch((error) => setError(error.message));
     } else {
@@ -50,12 +51,12 @@ export default function RegisterForm({}: props) {
   return (
     <Form onSubmit={handleSubmit}>
       <p>{error}</p>
-      <label>Username</label>
+      <label>Name</label>
       <input
-        value={formValues.username}
-        type="username"
-        name="username"
-        placeholder="coolname77 "
+        value={formValues.name}
+        type="name"
+        name="name"
+        placeholder="Jon"
         onChange={handleInputChange}
         required
       />
@@ -64,7 +65,7 @@ export default function RegisterForm({}: props) {
         value={formValues.email}
         type="email"
         name="email"
-        placeholder="coolname77@example.com"
+        placeholder="Jon@example.com"
         onChange={handleInputChange}
         required
       />
@@ -88,7 +89,7 @@ export default function RegisterForm({}: props) {
         required
         minLength={6}
       />
-      <button type="submit">Register</button>
+      <Button type="submit">Register</Button>
     </Form>
   );
 }
