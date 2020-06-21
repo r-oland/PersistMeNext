@@ -1,13 +1,11 @@
 // Components==============
 import Head from "next/head";
 import styled from "styled-components";
+import DailyView from "../macro-tracker/Daily";
+import { Container } from "../styles/mixins";
 // =========================
 
-const Wrapper = styled.div`
-  img {
-    width: 800px;
-  }
-`;
+const Wrapper = styled(Container)``;
 
 type props = {};
 
@@ -17,7 +15,9 @@ export default function Index({}: props) {
       <Head>
         <title>Home</title>
       </Head>
-      <Wrapper></Wrapper>
+      <Wrapper>
+        <DailyView />
+      </Wrapper>
     </>
   );
 }

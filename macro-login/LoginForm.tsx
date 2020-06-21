@@ -1,7 +1,7 @@
 // Components==============
 import firebase from "firebase/app";
 import { useState } from "react";
-import { useUser } from "../global-components/firebase/useUser";
+import { useUser } from "../firebase/useUser";
 import { Button } from "../styles/mixins";
 import { Form } from "./FormStyling";
 // =========================

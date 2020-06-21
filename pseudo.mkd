@@ -2,15 +2,18 @@
 
 \*Validate if user exists on email update
 \*change password
-\*safety rules?
-Confirmation emails
+\*security rules
+\*Confirmation email
 third party log in services
+forgot password
 
 ## UI
 
 animations nav elements
 animations buttons
-styling error messages login
+\*styling error messages login
+add a dark theme
+add logo + link to info home page
 
 ## main
 
@@ -18,9 +21,14 @@ styling error messages login
 \*figure out a date formatting solution - day
 \*figure out a date formatting solution - week
 \*add database structure
-\*optimize listener in ui
+\*optimize listener in ui (first local => update after timeout?)
 \*code color picker
 \*add daytype selector
+\*security rules
+\*only allow one direction
+\*limit array strings
+\*what happens to legacy variables after change?
+multi selector for desktop
 
 ## progress
 
@@ -32,7 +40,12 @@ add option to export
 
 \*link color picker options
 add daytype options
+add dark theme toggle
+amount of blocks
 
 ## general
 
+\*analyse file size on build
+\*Google lighthouse
 add informational home page
+add payment feature

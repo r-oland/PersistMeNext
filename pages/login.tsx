@@ -3,7 +3,7 @@ import { useRouter } from "next/dist/client/router";
 import Head from "next/head";
 import { useEffect } from "react";
 import styled from "styled-components";
-import { useUser } from "../global-components/firebase/useUser";
+import { useUser } from "../firebase/useUser";
 import AuthComp from "../macro-login";
 import { Container } from "../styles/mixins";
 // =========================

@@ -15,7 +15,7 @@ export const theme: DefaultTheme = {
     black: "#1A1A1A",
     white: "#FFFFFF",
     offWhite: "#FAFAFA",
-    gray: "#484848",
+    gray: "#343434",
   },
   shadow: {
     xs: "0 1px 3px rgba(0, 0, 0, 0.1)",

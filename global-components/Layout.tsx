@@ -1,7 +1,7 @@
 import { useRouter } from "next/dist/client/router";
 import { useEffect } from "react";
 import styled from "styled-components";
-import { useUser } from "./firebase/useUser";
+import { useUser } from "../firebase/useUser";
 import Nav from "./Nav";
 
 const Wrapper = styled.div`

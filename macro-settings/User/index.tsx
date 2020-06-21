@@ -2,7 +2,7 @@
 import firebase from "firebase/app";
 import { useState } from "react";
 import styled from "styled-components";
-import { useUser } from "../../global-components/firebase/useUser";
+import { useUser } from "../../firebase/useUser";
 import Buttons from "./Buttons";
 // =========================
 
