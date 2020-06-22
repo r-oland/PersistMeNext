@@ -17,7 +17,7 @@ type props = { i: number };
 export default function Cluster({ i }: props) {
   const amount = ["", "", "", "", "", "", "", ""];
 
-  const items = amount.map((e, index) => {
+  const items = amount.map((_, index) => {
     const newI =
       i === 1
         ? index + 8

@@ -13,14 +13,20 @@ export const today = () => {
 };
 
 export const weekNumber = () => {
-  Date.prototype.getWeek = function () {
-    var onejan = new Date(this.getFullYear(), 0, 1);
-    var today = new Date(this.getFullYear(), this.getMonth(), this.getDate());
-    var dayOfYear = (today - onejan + 1) / 86400000;
-    return Math.ceil(dayOfYear / 7);
-  };
+  function ISO8601_week_no(dt) {
+    var tdt = new Date(dt.valueOf());
+    var dayn = (dt.getDay() + 6) % 7;
+    tdt.setDate(tdt.getDate() - dayn + 3);
+    var firstThursday = tdt.valueOf();
+    tdt.setMonth(0, 1);
+    if (tdt.getDay() !== 4) {
+      tdt.setMonth(0, 1 + ((4 - tdt.getDay() + 7) % 7));
+    }
+    return 1 + Math.ceil((firstThursday - tdt) / 604800000);
+  }
 
-  return new Date().getWeek();
+  const dt = new Date();
+  return ISO8601_week_no(dt);
 };
 
 export const year = () => {

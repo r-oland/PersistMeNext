@@ -6,10 +6,15 @@
     "localhost": "next dev ",
     "start": "next dev -H 192.168.2.146 -p 8000",
     "build": "next build",
-    "serve": "next start"
+    "serve": "next start",
+    "analyze": "cross-env ANALYZE=true next build",
+    "analyze:server": "cross-env BUNDLE_ANALYZE=server next build",
+    "analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build"
   },
   "dependencies": {
+    "@next/bundle-analyzer": "^9.4.4",
     "@types/styled-components": "^5.1.0",
+    "cross-env": "^7.0.2",
     "firebase": "^7.15.1",
     "framer-motion": "^1.11.1",
     "hooks-lib": "^1.0.6",

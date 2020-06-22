@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 import { ThemeProvider } from "styled-components";
 import { useData } from "../firebase/useData";
 import { useMediaQ } from "../micro-components/useMediaQ";
@@ -12,16 +12,25 @@ type props = {
 
 export const AppContext = createContext({
   query: false,
-  setWeek: (week: number) => {},
+  setWeek: (week: number) => {
+    week;
+  },
   week: 0,
+  activity: { activity: "initial", style: 0 },
+  setActivity: (activity: { activity: string; style: number }) => {
+    activity;
+  },
 });
 
 export default function AppWrapper({ children }: props) {
   const query = useMediaQ("min", 900);
   const { week, setWeek } = useData();
+  const [activity, setActivity] = useState({ activity: "initial", style: 0 });
 
   return (
-    <AppContext.Provider value={{ query, week, setWeek }}>
+    <AppContext.Provider
+      value={{ query, week, setWeek, activity, setActivity }}
+    >
       <ThemeProvider theme={theme}>
         <Layout>{children}</Layout>
         <GlobalStyles />

@@ -1,37 +1,49 @@
 // Components==============
-import { useContext } from "react";
 import styled from "styled-components";
-import { UserContext } from "../firebase/useUser";
 import ClusterCollection from "./ui/ClusterCollection";
 // =========================
 
+const Grid = styled.div`
+  display: grid;
+  width: 100%;
+  justify-items: center;
+  align-content: center;
+  margin-top: ${({ theme: { spacing } }) => spacing[12]};
+
+  ${({ theme: { mediaQ } }) => mediaQ.desktopS} {
+    height: 100vh;
+    margin-top: 0;
+  }
+`;
+
 const Wrapper = styled.div`
+  width: 100%;
   max-width: 850px;
-  background: ${({ theme: { color } }) => color.white};
-  padding: ${({ theme: { spacing } }) => `${spacing[4]} ${spacing[6]}`};
-  box-shadow: ${({ theme: { shadow } }) => shadow.xs};
-  border-radius: ${({ theme: { borderRadius } }) => borderRadius};
-  margin: 0 auto;
+
+  ${({ theme: { mediaQ } }) => mediaQ.desktopS} {
+    padding: ${({ theme: { spacing } }) => `${spacing[7]} ${spacing[6]}`};
+    background: ${({ theme: { color } }) => color.white};
+    border-radius: ${({ theme: { borderRadius } }) => borderRadius};
+    box-shadow: ${({ theme: { shadow } }) => shadow.xs};
+    transform: translateY(-60px);
+  }
+
+  h2 {
+    margin-bottom: ${({ theme: { spacing } }) => spacing[1]};
+  }
 `;
 
 type props = {};
 
 export default function DailyView({}: props) {
   // const { setWeek, week } = useContext(AppContext);
-  const { data } = useContext(UserContext);
-  console.log(data?.sunday);
+  // const { data } = useContext(UserContext);
 
   return (
-    <Wrapper>
-      <ClusterCollection />
-    </Wrapper>
+    <Grid>
+      <Wrapper>
+        <ClusterCollection />
+      </Wrapper>
+    </Grid>
   );
 }
-
-//// create add document function
-//// create update document function
-//// add listener for data changes?
-//// add data to user hook
-//// format the dates correct
-// add activities to user hook
-// code activity picker

@@ -14,7 +14,7 @@ type props = {};
 export default function ClusterCollection({}: props) {
   const amount = ["", "", "", "", ""];
 
-  const items = amount.map((e, index) => <Cluster key={index} i={index} />);
+  const items = amount.map((_, index) => <Cluster key={index} i={index} />);
 
   return <Wrapper>{items}</Wrapper>;
 }

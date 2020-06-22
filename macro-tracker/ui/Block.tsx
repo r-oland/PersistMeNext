@@ -38,25 +38,34 @@ const Shadow = styled(motion.div)`
 type props = { i: number };
 
 export default function Block({ i }: props) {
-  const activity = "initial";
-  const { user } = useUser();
-  const { week } = useContext(AppContext);
+  const { user, data } = useUser();
+  const { week, activity } = useContext(AppContext);
+
+  const day = `${today()}.${i}`;
+  const firebaseActivity = data ? data[today()][i] : "initial";
 
   const handleClick = () => {
-    const day = `${today()}.${i}`;
+    if (firebaseActivity === "initial" && activity.activity === "initial") {
+      console.log("select a activity");
+    } else {
+      const document = firebase
+        .firestore()
+        .collection("users")
+        .doc(user?.uid)
+        .collection("data")
+        .doc(`${year()}_${week}`);
 
-    firebase
-      .firestore()
-      .collection("users")
-      .doc(user?.uid)
-      .collection("data")
-      .doc(`${year()}_${week}`)
-      .update({ [day]: activity });
+      if (firebaseActivity === activity.activity) {
+        document.update({ [day]: "initial" });
+      } else {
+        document.update({ [day]: activity.activity });
+      }
+    }
   };
 
   return (
     <Wrapper
-      animate={activity}
+      animate={firebaseActivity}
       whileHover="hovering"
       initial="initial"
       onClick={handleClick}
@@ -70,7 +79,8 @@ export default function Block({ i }: props) {
 const blockVariants = {
   initial: { backgroundColor: "#ffffff" },
   hovering: {},
-  something: { backgroundColor: "#FDC61A" },
+  work: { backgroundColor: "#FDC61A" },
+  exercise: { backgroundColor: "#FDC61A" },
 };
 
 const shadowVariants = {

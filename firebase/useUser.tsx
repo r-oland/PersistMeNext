@@ -7,6 +7,7 @@ type user = {
   name: string;
   email: string | null;
   subscriptionDate: object;
+  activities: [];
 };
 
 type contextProps = {
@@ -39,13 +40,15 @@ export default function UserContextComp({ children }: props) {
           const { uid, email } = user;
 
           userUnsubscribe = getUserProfile(uid, (r) => {
-            const { name, subscriptionDate } = r.data();
+            const { name, subscriptionDate, activities } = r.data();
+
             setUser((prev: any) => ({
               ...prev,
               uid,
               email,
               name,
               subscriptionDate,
+              activities,
             }));
 
             setLoadingUser(false);

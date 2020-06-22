@@ -28,6 +28,7 @@ add logo + link to info home page
 \*only allow one direction
 \*limit array strings
 \*what happens to legacy variables after change?
+\*add clear option to activityPicker
 multi selector for desktop
 
 ## progress
