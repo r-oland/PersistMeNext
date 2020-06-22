@@ -7,7 +7,7 @@ const Grid = styled.div`
   width: 100%;
   justify-items: center;
   align-content: center;
-  margin-top: ${({ theme: { spacing } }) => spacing[12]};
+  margin-top: ${({ theme: { spacing } }) => spacing[10]};
 
   ${({ theme: { mediaQ } }) => mediaQ.desktopS} {
     height: 100vh;

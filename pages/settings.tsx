@@ -14,7 +14,7 @@ const SubTitle = styled.p`
   font-weight: ${({ theme: { fontWeight } }) => fontWeight.semiBold};
   color: ${({ theme: { color } }) => color.gray};
   border-bottom: 1px solid ${({ theme: { color } }) => color.gray};
-  margin-bottom: ${({ theme: { spacing } }) => spacing[2]};
+  margin-bottom: ${({ theme: { spacing } }) => spacing[3]};
   margin-top: ${({ theme: { spacing } }) => spacing[4]};
   width: 75%;
 `;

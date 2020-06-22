@@ -4,9 +4,25 @@ import Cluster from "./Cluster";
 // =========================
 
 const Wrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  max-width: 100vw;
+  display: grid;
+  grid-gap: ${({ theme: { spacing } }) => spacing[6]};
+  justify-items: center;
+
+  ${({ theme: { mediaQ } }) => mediaQ.custom(300)} {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  ${({ theme: { mediaQ } }) => mediaQ.custom(500)} {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  ${({ theme: { mediaQ } }) => mediaQ.tablet} {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  ${({ theme: { mediaQ } }) => mediaQ.custom(1000)} {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
 `;
 
 type props = {};

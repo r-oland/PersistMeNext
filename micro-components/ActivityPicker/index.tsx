@@ -24,7 +24,7 @@ type props = { className?: string };
 
 export default function ActivityPicker({ className }: props) {
   const { activity } = useContext(AppContext);
-  const [modal, setModal] = useState(true);
+  const [modal, setModal] = useState(false);
 
   const ref = useRef(null!);
   useOnClickOutside(ref, () => setModal(false), modal);

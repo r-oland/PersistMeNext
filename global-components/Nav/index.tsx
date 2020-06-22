@@ -9,6 +9,7 @@ const Wrapper = styled.div`
   bottom: 0;
   left: 0;
   width: 100%;
+  z-index: 100;
   height: ${({ theme: { spacing } }) => spacing[10]};
   background: ${({ theme: { color } }) => color.white};
   box-shadow: ${({ theme: { shadow } }) => shadow.l};

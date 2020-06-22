@@ -15,6 +15,7 @@ const Wrapper = styled.div`
       border: none;
       border-bottom: solid 1px ${({ theme: { color } }) => color.gray};
       width: 140px;
+      background: none;
     }
 
     button {

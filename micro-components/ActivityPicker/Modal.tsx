@@ -16,7 +16,7 @@ const Wrapper = styled.div`
   left: 50%;
   padding: ${({ theme: { spacing } }) => `${spacing[2]} ${spacing[4]}`};
   box-shadow: ${({ theme: { shadow } }) => shadow.xs};
-  bottom: 60px;
+  bottom: 75px;
   * {
     &:last-child {
       margin-bottom: 0 !important;

@@ -8,7 +8,7 @@ const Grid = styled.div`
   width: 100%;
   justify-items: center;
   align-content: center;
-  margin-top: ${({ theme: { spacing } }) => spacing[12]};
+  margin-top: ${({ theme: { spacing } }) => spacing[10]};
 
   ${({ theme: { mediaQ } }) => mediaQ.desktopS} {
     height: 100vh;
@@ -36,9 +36,6 @@ const Wrapper = styled.div`
 type props = {};
 
 export default function DailyView({}: props) {
-  // const { setWeek, week } = useContext(AppContext);
-  // const { data } = useContext(UserContext);
-
   return (
     <Grid>
       <Wrapper>

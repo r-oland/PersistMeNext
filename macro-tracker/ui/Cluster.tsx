@@ -3,9 +3,6 @@ import styled from "styled-components";
 import Block from "./Block";
 // =========================
 
-const Wrapper = styled.div`
-  display: inline-block;
-`;
 const Grid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -32,9 +29,5 @@ export default function Cluster({ i }: props) {
     return <Block key={index} i={newI} />;
   });
 
-  return (
-    <Wrapper>
-      <Grid>{items}</Grid>
-    </Wrapper>
-  );
+  return <Grid>{items}</Grid>;
 }
