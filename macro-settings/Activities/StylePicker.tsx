@@ -24,10 +24,17 @@ const Wrapper = styled.div`
 
 type props = {
   setShowPicker: any;
-  activityNumber: string;
+  activityNumber?: string;
+  newStyle?: boolean;
+  setBlockStyle?: any;
 };
 
-export default function StylePicker({ setShowPicker, activityNumber }: props) {
+export default function StylePicker({
+  setShowPicker,
+  activityNumber,
+  newStyle,
+  setBlockStyle,
+}: props) {
   const { user } = useUser();
 
   const changeStyle = async (style: number) => {
@@ -40,10 +47,20 @@ export default function StylePicker({ setShowPicker, activityNumber }: props) {
       .update({ [`activities.${activityNumber}.style`]: style });
   };
 
+  const pickStyle = (style: number) => {
+    setBlockStyle(style);
+    setShowPicker(false);
+  };
+
   const styles = activityStyles.map((e, index) => {
     if (index !== 0) {
       return (
-        <button key={index} onClick={() => changeStyle(index)}>
+        <button
+          key={index}
+          onClick={() => {
+            newStyle ? pickStyle(index) : changeStyle(index);
+          }}
+        >
           <Block completeStyle={e} />
         </button>
       );

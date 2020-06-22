@@ -5,6 +5,7 @@ import { useUser } from "../../firebase/useUser";
 import Block from "../../micro-components/Block";
 import { useOnClickOutside } from "../../micro-components/useOnClickOutside";
 import AddActivity from "./AddActivity";
+import { deleteActivity } from "./deleteActivity";
 import StylePicker from "./StylePicker";
 // =========================
 
@@ -40,13 +41,10 @@ const Flex = styled.div`
 
 const Activity = ({ activity, activityNumber }: activity) => {
   const [showPicker, setShowPicker] = useState(false);
+  const { user } = useUser();
 
   const ref = useRef(null!);
   useOnClickOutside(ref, () => setShowPicker(false), showPicker);
-
-  const deleteActivity = () => {
-    console.log("deleted activity");
-  };
 
   return (
     <Grid ref={ref}>
@@ -59,7 +57,7 @@ const Activity = ({ activity, activityNumber }: activity) => {
       </div>
       <Flex>
         <p>{activity.activity}</p>
-        <button onClick={deleteActivity}>
+        <button onClick={() => deleteActivity(activityNumber, user?.uid)}>
           <svg width="17" height="17" viewBox="0 0 20 20">
             <path
               d="M14.2426 15.6568L10 11.4142L5.75736 15.6568L4.34315 14.2426L8.58579 9.99996L4.34315 5.75732L5.75736 4.3431L10 8.58575L14.2426 4.3431L15.6569 5.75732L11.4142 9.99996L15.6569 14.2426L14.2426 15.6568Z"
