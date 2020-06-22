@@ -1,65 +1,50 @@
 // Components==============
+import { motion } from "framer-motion";
 import { useContext, useRef, useState } from "react";
 import styled from "styled-components";
 import { useUser } from "../../firebase/useUser";
 import { AppContext } from "../../global-components/AppWrapper";
+import { activityVariants } from "../../styles/activityStyles";
 import { useOnClickOutside } from "../useOnClickOutside";
+import Modal from "./Modal";
 // =========================
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  position: relative;
+`;
 
-const Modal = styled.div``;
-
-const Svg = styled.svg`
+const Circle = styled(motion.div)`
   cursor: pointer;
   width: 50px;
   height: 50px;
+  border-radius: 100%;
+  border: 3px solid ${({ theme: { color } }) => color.black};
 `;
 
 type props = { className?: string };
 
 export default function ActivityPicker({ className }: props) {
-  const [modal, setModal] = useState(false);
+  const { activity } = useContext(AppContext);
+  const [modal, setModal] = useState(true);
   const { user } = useUser();
-  const { activity, setActivity } = useContext(AppContext);
+  const styles = ["initial"];
 
-  console.log(activity);
+  user?.activities.forEach((e: { activity: string; style: number }) => {
+    styles.push(`style${e.style}`);
+  });
 
   const ref = useRef(null!);
   useOnClickOutside(ref, () => setModal(false), modal);
 
-  const modalItems = user?.activities.map(
-    (e: { activity: string; style: number }, index) => {
-      return (
-        <button
-          onClick={() => {
-            setActivity(e);
-            setModal(false);
-          }}
-          key={index}
-        >
-          {e.activity}
-        </button>
-      );
-    }
-  );
-
   return (
     <Wrapper className={className} ref={ref}>
-      {modal && <Modal>{modalItems}</Modal>}
-      <Svg
-        viewBox="0 0 50 50"
+      {modal && <Modal setModal={setModal} />}
+      <Circle
+        animate={styles[activity.style]}
+        initial={false}
+        variants={activityVariants}
         onClick={() => (modal ? setModal(false) : setModal(true))}
-      >
-        <circle
-          cx="25"
-          cy="25"
-          r="23.5"
-          fill="#FDC61A"
-          stroke="#1A1A1A"
-          strokeWidth="2.5"
-        />
-      </Svg>
+      />
     </Wrapper>
   );
 }

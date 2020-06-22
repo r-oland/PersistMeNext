@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { useUser } from "../../firebase/useUser";
 import { AppContext } from "../../global-components/AppWrapper";
 import { today, year } from "../../micro-components/dateFormating";
+import { activityVariants } from "../../styles/activityStyles";
 // =========================
 
 const Wrapper = styled(motion.div)`
@@ -37,6 +38,11 @@ const Shadow = styled(motion.div)`
 
 type props = { i: number };
 
+type activity = {
+  activity: string;
+  style: number;
+};
+
 export default function Block({ i }: props) {
   const { user, data } = useUser();
   const { week, activity } = useContext(AppContext);
@@ -63,25 +69,26 @@ export default function Block({ i }: props) {
     }
   };
 
+  const filter: any = user?.activities?.filter(
+    (e: activity) => e.activity === firebaseActivity
+  );
+  const style =
+    filter?.length > 0
+      ? filter?.map((e: activity) => `style${e.style}`)[0]
+      : "initial";
+
   return (
     <Wrapper
-      animate={firebaseActivity}
+      animate={style}
       whileHover="hovering"
-      initial="initial"
+      initial={style}
       onClick={handleClick}
     >
       <Shadow variants={shadowVariants} />
-      <Element variants={blockVariants} />
+      <Element variants={activityVariants} />
     </Wrapper>
   );
 }
-
-const blockVariants = {
-  initial: { backgroundColor: "#ffffff" },
-  hovering: {},
-  work: { backgroundColor: "#FDC61A" },
-  exercise: { backgroundColor: "#FDC61A" },
-};
 
 const shadowVariants = {
   hovering: {
