@@ -1,8 +1,7 @@
 // Components==============
 import { motion } from "framer-motion";
 import styled from "styled-components";
-import { useUser } from "../firebase/useUser";
-import { activityVariants } from "../styles/activityStyles";
+import { activityStyles, activityVariants } from "../styles/activityStyles";
 // =========================
 
 const Wrapper = styled.div`
@@ -33,22 +32,16 @@ const Shadow = styled.div`
 `;
 
 type props = {
-  style: number;
+  style?: number;
+  completeStyle?: string;
 };
 
-export default function Block({ style }: props) {
-  const { user } = useUser();
-  const styles = ["initial"];
-
-  user?.activities.forEach((e: { activity: string; style: number }) => {
-    styles.push(`style${e.style}`);
-  });
-
+export default function Block({ style, completeStyle }: props) {
   return (
     <Wrapper>
       <Shadow />
       <Element
-        animate={styles[style]}
+        animate={style ? activityStyles[style] : completeStyle}
         variants={activityVariants}
         initial={false}
       />

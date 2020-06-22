@@ -1,3 +1,5 @@
+export const activityStyles = ["initial", "style1", "style2"];
+
 export const activityVariants = {
   initial: { backgroundImage: "linear-gradient(to right, #FFFFFF, #FFFFFF)" },
   style1: { backgroundImage: "linear-gradient(to right, #FDC61A, #FDC61A)" },

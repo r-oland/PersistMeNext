@@ -14,11 +14,11 @@ export default function RegisterForm({}: props) {
     password: "",
     confirmPassword: "",
     name: "",
-    activities: [
-      { activity: "work", style: 1 },
-      { activity: "exercise", style: 2 },
-      { activity: "music", style: 3 },
-    ],
+    activities: {
+      activity1: { activity: "work", style: 1 },
+      activity2: { activity: "exercise", style: 2 },
+      activity3: { activity: "music", style: 3 },
+    },
   });
   const { user } = useUser();
   const [error, setError] = useState("");

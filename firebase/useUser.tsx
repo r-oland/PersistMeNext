@@ -8,6 +8,7 @@ type user = {
   email: string | null;
   subscriptionDate: object;
   activities: [];
+  completeActivities: [];
 };
 
 type contextProps = {
@@ -48,7 +49,12 @@ export default function UserContextComp({ children }: props) {
               email,
               name,
               subscriptionDate,
-              activities,
+              activities: Object.entries(activities)
+                .sort()
+                .map((r) => {
+                  return r[1];
+                }),
+              completeActivities: activities,
             }));
 
             setLoadingUser(false);
