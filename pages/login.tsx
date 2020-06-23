@@ -13,14 +13,14 @@ const Wrapper = styled(Container)``;
 type props = {};
 
 export default function login({}: props) {
-  const { user } = useUser();
+  const { signedIn } = useUser();
   const router = useRouter();
 
   useEffect(() => {
-    if (user) {
+    if (signedIn) {
       router.push("/");
     }
-  }, [user]);
+  }, [signedIn]);
 
   return (
     <>

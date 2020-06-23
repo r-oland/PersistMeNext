@@ -20,16 +20,29 @@ export const AppContext = createContext({
   setActivity: (activity: { activity: string; style: number }) => {
     activity;
   },
+  dayModalState: false,
+  setDayModalState: (dayModalState: boolean) => {
+    dayModalState;
+  },
 });
 
 export default function AppWrapper({ children }: props) {
   const query = useMediaQ("min", 900);
   const { week, setWeek } = useData();
   const [activity, setActivity] = useState({ activity: "initial", style: 0 });
+  const [dayModalState, setDayModalState] = useState(false);
 
   return (
     <AppContext.Provider
-      value={{ query, week, setWeek, activity, setActivity }}
+      value={{
+        query,
+        week,
+        setWeek,
+        activity,
+        setActivity,
+        dayModalState,
+        setDayModalState,
+      }}
     >
       <ThemeProvider theme={theme}>
         <Layout>{children}</Layout>

@@ -33,3 +33,23 @@ export const year = () => {
   const todayDate = new Date();
   return todayDate.getFullYear();
 };
+
+export const month = () => {
+  const month = new Date().getMonth();
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  return monthNames[month];
+};

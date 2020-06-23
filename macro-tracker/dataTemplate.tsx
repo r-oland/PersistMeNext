@@ -1,5 +1,5 @@
 const dayTemplate = {
-  0: "initial",
+  dayType: "unset",
   1: "initial",
   2: "initial",
   3: "initial",

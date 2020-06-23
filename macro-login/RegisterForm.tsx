@@ -19,6 +19,11 @@ export default function RegisterForm({}: props) {
       activity2: { activity: "exercise", style: 2 },
       activity3: { activity: "music", style: 3 },
     },
+    dayTypes: {
+      type1: "Workday",
+      type2: "Half-day",
+      type3: "Off-day",
+    },
   });
   const { user } = useUser();
   const [error, setError] = useState("");

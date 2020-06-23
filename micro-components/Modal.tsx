@@ -24,6 +24,8 @@ const Wrapper = styled.div`
     background: ${({ theme: { color } }) => color.white};
     border-radius: ${({ theme: { borderRadius } }) => borderRadius};
     box-shadow: ${({ theme: { shadow } }) => shadow.xs};
+    max-height: 90vh;
+    overflow: auto;
   }
 
   h2 {

@@ -1,5 +1,7 @@
 // Components==============
 import styled from "styled-components";
+import { month, today } from "../micro-components/dateFormating";
+import DayPicker from "./DayPicker";
 import ClusterCollection from "./ui/ClusterCollection";
 // =========================
 
@@ -21,7 +23,7 @@ const Wrapper = styled.div`
   max-width: 850px;
 
   ${({ theme: { mediaQ } }) => mediaQ.desktopS} {
-    padding: ${({ theme: { spacing } }) => `${spacing[7]} ${spacing[6]}`};
+    padding: ${({ theme: { spacing } }) => `${spacing[6]} ${spacing[6]}`};
     background: ${({ theme: { color } }) => color.white};
     border-radius: ${({ theme: { borderRadius } }) => borderRadius};
     box-shadow: ${({ theme: { shadow } }) => shadow.xs};
@@ -29,7 +31,8 @@ const Wrapper = styled.div`
   }
 
   h2 {
-    margin-bottom: ${({ theme: { spacing } }) => spacing[1]};
+    margin-bottom: ${({ theme: { spacing } }) => spacing[0]};
+    text-align: center;
   }
 `;
 
@@ -39,6 +42,8 @@ export default function DailyView({}: props) {
   return (
     <Grid>
       <Wrapper>
+        <h2>{`${today()} ${month()} ${new Date().getDate()}  `}</h2>
+        <DayPicker />
         <ClusterCollection />
       </Wrapper>
     </Grid>

@@ -1,7 +1,10 @@
+import { AnimatePresence } from "framer-motion";
 import { useRouter } from "next/dist/client/router";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import styled from "styled-components";
 import { useUser } from "../firebase/useUser";
+import { AppContext } from "./AppWrapper";
+import DayModal from "./DayModal";
 import Nav from "./Nav";
 
 const Wrapper = styled.div`
@@ -18,17 +21,21 @@ type props = {
 
 export default function Layout({ children }: props) {
   const router = useRouter();
-  const { user, loadingUser } = useUser();
+  const { loadingUser, signedIn } = useUser();
+
+  const { dayModalState } = useContext(AppContext);
 
   useEffect(() => {
-    if (!loadingUser && !user && router.pathname !== "/login") {
+    if (!loadingUser && !signedIn && router.pathname !== "/login") {
       router.push("/login");
     }
-  }, [loadingUser, router.pathname, user]);
+  }, [loadingUser, router.pathname, signedIn]);
 
   return (
     <Wrapper>
+      <AnimatePresence>{dayModalState && <DayModal />}</AnimatePresence>
       <Nav />
+
       {children}
     </Wrapper>
   );

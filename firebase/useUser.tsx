@@ -9,6 +9,7 @@ type user = {
   subscriptionDate: object;
   activities: [];
   completeActivities: [];
+  dayTypes: [];
 };
 
 type contextProps = {
@@ -17,6 +18,7 @@ type contextProps = {
   setUser: any;
   setData: any;
   loadingUser: boolean;
+  signedIn: boolean;
 };
 
 type props = {
@@ -27,6 +29,7 @@ export const UserContext = createContext<Partial<contextProps>>({});
 
 export default function UserContextComp({ children }: props) {
   const [user, setUser] = useState<user | null>(null);
+  const [signedIn, setSignedIn] = useState(false);
   const [data, setData] = useState(null);
   const [loadingUser, setLoadingUser] = useState(true); // Helpful, to update the UI accordingly.
 
@@ -38,10 +41,11 @@ export default function UserContextComp({ children }: props) {
       try {
         if (user) {
           // User is signed in.
+          setSignedIn(true);
           const { uid, email } = user;
 
           userUnsubscribe = getUserProfile(uid, (r) => {
-            const { name, subscriptionDate, activities } = r.data();
+            const { name, subscriptionDate, activities, dayTypes } = r.data();
 
             setUser((prev: any) => ({
               ...prev,
@@ -49,6 +53,11 @@ export default function UserContextComp({ children }: props) {
               email,
               name,
               subscriptionDate,
+              dayTypes: Object.entries(dayTypes)
+                .sort()
+                .map((r) => {
+                  return r[1];
+                }),
               activities: Object.entries(activities)
                 .sort()
                 .map((r) => {
@@ -60,10 +69,12 @@ export default function UserContextComp({ children }: props) {
             setLoadingUser(false);
           });
         } else {
+          setSignedIn(false);
           setUser(null);
           setLoadingUser(false);
         }
       } catch (error) {
+        setLoadingUser(false);
         console.log(error);
       }
     });
@@ -76,7 +87,9 @@ export default function UserContextComp({ children }: props) {
   }, []);
 
   return (
-    <UserContext.Provider value={{ user, data, setData, setUser, loadingUser }}>
+    <UserContext.Provider
+      value={{ user, data, setData, setUser, loadingUser, signedIn }}
+    >
       {children}
     </UserContext.Provider>
   );
