@@ -57,7 +57,12 @@ const Activity = ({ activity, activityNumber }: activity) => {
       </div>
       <Flex>
         <p>{activity.activity}</p>
-        <button onClick={() => deleteActivity(activityNumber, user?.uid)}>
+        <button
+          onClick={() => {
+            if (user?.activities.length > 1)
+              return deleteActivity(activityNumber, user?.uid);
+          }}
+        >
           <svg width="17" height="17" viewBox="0 0 20 20">
             <path
               d="M14.2426 15.6568L10 11.4142L5.75736 15.6568L4.34315 14.2426L8.58579 9.99996L4.34315 5.75732L5.75736 4.3431L10 8.58575L14.2426 4.3431L15.6569 5.75732L11.4142 9.99996L15.6569 14.2426L14.2426 15.6568Z"
@@ -80,7 +85,7 @@ const Activity = ({ activity, activityNumber }: activity) => {
 export default function Activities({}: props) {
   const { user } = useUser();
 
-  const activities = user?.activities.map((e, index) => {
+  const activities = user?.activities.map((e: any, index: number) => {
     const activityNumber = Object.entries(user?.completeActivities)
       .sort()
       .map((r) => {

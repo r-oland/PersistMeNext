@@ -52,9 +52,7 @@ export default function Block({ i, day }: props) {
     data && !day ? data[today()][i] : data && day ? data[day][i] : "initial";
 
   const handleClick = () => {
-    if (firebaseActivity === "initial" && activity.activity === "initial") {
-      console.log("select a activity");
-    } else {
+    if (activity.activity !== "initial") {
       const document = firebase
         .firestore()
         .collection("users")
@@ -63,7 +61,7 @@ export default function Block({ i, day }: props) {
         .doc(`${year()}_${week}`);
 
       if (firebaseActivity === activity.activity) {
-        document.update({ [thisDay]: "initial" });
+        document.update({ [thisDay]: firebase.firestore.FieldValue.delete() });
       } else {
         document.update({ [thisDay]: activity.activity });
       }

@@ -37,7 +37,7 @@ export default function DayPicker({ dayType, day }: props) {
           onClick={() =>
             dayModalState
               ? setDayModalState(false)
-              : setDayModalState(dayType ? day : false)
+              : setDayModalState(dayType ? day : true)
           }
         >
           {dayType ? dayType : data && data[d].dayType}

@@ -37,8 +37,6 @@ export default function AddActivity({}: props) {
   const [blockStyle, setBlockStyle] = useState(1);
   const { user } = useUser();
 
-  let amountOfActivities = user?.activities?.length || 0;
-
   const handleInputChange = (e: any) => {
     e.persist();
     setFormValue(e.target.value);
@@ -53,7 +51,7 @@ export default function AddActivity({}: props) {
       .collection("users")
       .doc(user?.uid)
       .update({
-        [`activities.activity${amountOfActivities + 1}`]: {
+        [`activities.${formValue}`]: {
           activity: formValue,
           style: blockStyle,
         },
