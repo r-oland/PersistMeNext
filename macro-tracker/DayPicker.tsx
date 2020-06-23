@@ -20,9 +20,12 @@ const Flex = styled.div`
   }
 `;
 
-type props = {};
+type props = {
+  dayType?: string;
+  day?: string;
+};
 
-export default function DayPicker({}: props) {
+export default function DayPicker({ dayType, day }: props) {
   const { dayModalState, setDayModalState } = useContext(AppContext);
   const { data } = useUser();
   const d = today();
@@ -32,10 +35,12 @@ export default function DayPicker({}: props) {
       <Flex>
         <button
           onClick={() =>
-            dayModalState ? setDayModalState(false) : setDayModalState(true)
+            dayModalState
+              ? setDayModalState(false)
+              : setDayModalState(dayType ? day : false)
           }
         >
-          {data && data[d].dayType}
+          {dayType ? dayType : data && data[d].dayType}
         </button>
       </Flex>
     </Wrapper>

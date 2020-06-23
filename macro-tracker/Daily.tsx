@@ -11,8 +11,10 @@ const Grid = styled.div`
   justify-items: center;
   align-content: center;
   margin-top: ${({ theme: { spacing } }) => spacing[10]};
+  padding-bottom: ${({ theme: { spacing } }) => spacing[12]};
 
   ${({ theme: { mediaQ } }) => mediaQ.desktopS} {
+    padding-bottom: 0;
     height: 100vh;
     margin-top: 0;
   }
@@ -33,6 +35,10 @@ const Wrapper = styled.div`
   h2 {
     margin-bottom: ${({ theme: { spacing } }) => spacing[0]};
     text-align: center;
+
+    ::first-letter {
+      text-transform: capitalize;
+    }
   }
 `;
 

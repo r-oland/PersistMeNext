@@ -7,7 +7,7 @@ type user = {
   name: string;
   email: string | null;
   subscriptionDate: object;
-  activities: [];
+  activities: any;
   completeActivities: [];
   dayTypes: [];
 };

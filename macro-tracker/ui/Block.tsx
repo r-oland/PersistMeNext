@@ -36,19 +36,20 @@ const Shadow = styled(motion.div)`
   border-radius: 1px;
 `;
 
-type props = { i: number };
+type props = { i: number; day?: string };
 
 type activity = {
   activity: string;
   style: number;
 };
 
-export default function Block({ i }: props) {
+export default function Block({ i, day }: props) {
   const { user, data } = useUser();
   const { week, activity } = useContext(AppContext);
 
-  const day = `${today()}.${i}`;
-  const firebaseActivity = data ? data[today()][i] : "initial";
+  const thisDay = day ? `${day}.${i}` : `${today()}.${i}`;
+  const firebaseActivity =
+    data && !day ? data[today()][i] : data && day ? data[day][i] : "initial";
 
   const handleClick = () => {
     if (firebaseActivity === "initial" && activity.activity === "initial") {
@@ -62,9 +63,9 @@ export default function Block({ i }: props) {
         .doc(`${year()}_${week}`);
 
       if (firebaseActivity === activity.activity) {
-        document.update({ [day]: "initial" });
+        document.update({ [thisDay]: "initial" });
       } else {
-        document.update({ [day]: activity.activity });
+        document.update({ [thisDay]: activity.activity });
       }
     }
   };

@@ -1,6 +1,7 @@
-import { createContext, useState } from "react";
-import { ThemeProvider } from "styled-components";
+import { createContext, useEffect, useRef, useState } from "react";
+import styled, { ThemeProvider } from "styled-components";
 import { useData } from "../firebase/useData";
+import { useUser } from "../firebase/useUser";
 import { useMediaQ } from "../micro-components/useMediaQ";
 import GlobalStyles from "../styles/GlobalStyles";
 import { theme } from "../styles/theme";
@@ -10,31 +11,35 @@ type props = {
   children: React.ReactNode;
 };
 
-export const AppContext = createContext({
-  query: false,
-  setWeek: (week: number) => {
-    week;
-  },
-  week: 0,
-  activity: { activity: "initial", style: 0 },
-  setActivity: (activity: { activity: string; style: number }) => {
-    activity;
-  },
-  dayModalState: false,
-  setDayModalState: (dayModalState: boolean) => {
-    dayModalState;
-  },
-});
+const Ref = styled.div`
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: -1000;
+  top: 0;
+  left: 0;
+`;
+
+export const AppContext = createContext<Partial<any>>({});
 
 export default function AppWrapper({ children }: props) {
   const query = useMediaQ("min", 900);
   const { week, setWeek } = useData();
+  const { user } = useUser();
   const [activity, setActivity] = useState({ activity: "initial", style: 0 });
   const [dayModalState, setDayModalState] = useState(false);
+  const dragRef = useRef(null!);
+
+  useEffect(() => {
+    if (user?.activities) {
+      setActivity(user?.activities[0]);
+    }
+  }, [user?.activities]);
 
   return (
     <AppContext.Provider
       value={{
+        dragRef,
         query,
         week,
         setWeek,
@@ -45,6 +50,7 @@ export default function AppWrapper({ children }: props) {
       }}
     >
       <ThemeProvider theme={theme}>
+        <Ref ref={dragRef} />
         <Layout>{children}</Layout>
         <GlobalStyles />
       </ThemeProvider>

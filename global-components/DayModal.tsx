@@ -62,10 +62,10 @@ const Shade = styled(motion.div)`
 type props = {};
 
 export default function DayModal({}: props) {
-  const { setDayModalState } = useContext(AppContext);
+  const { dayModalState, setDayModalState } = useContext(AppContext);
 
   const { user } = useUser();
-  const d = today();
+  const d = typeof dayModalState === "string" ? dayModalState : today();
   const w = weekNumber();
   const y = year();
 

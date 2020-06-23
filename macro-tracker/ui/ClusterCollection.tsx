@@ -25,12 +25,16 @@ const Wrapper = styled.div`
   }
 `;
 
-type props = {};
+type props = {
+  day?: string;
+};
 
-export default function ClusterCollection({}: props) {
+export default function ClusterCollection({ day }: props) {
   const amount = ["", "", "", "", ""];
 
-  const items = amount.map((_, index) => <Cluster key={index} i={index} />);
+  const items = amount.map((_, index) => (
+    <Cluster key={index} i={index} day={day} />
+  ));
 
   return <Wrapper>{items}</Wrapper>;
 }

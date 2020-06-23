@@ -34,6 +34,16 @@ export const year = () => {
   return todayDate.getFullYear();
 };
 
+export const weekNames = [
+  "monday",
+  "tuesday",
+  "wednesday",
+  "thursday",
+  "friday",
+  "saturday",
+  "sunday",
+];
+
 export const month = () => {
   const month = new Date().getMonth();
   const monthNames = [

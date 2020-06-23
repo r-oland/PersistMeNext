@@ -9,9 +9,9 @@ const Grid = styled.div`
   grid-gap: 10px 20px;
 `;
 
-type props = { i: number };
+type props = { i: number; day?: string };
 
-export default function Cluster({ i }: props) {
+export default function Cluster({ i, day }: props) {
   const amount = ["", "", "", "", "", "", "", ""];
 
   const items = amount.map((_, ind) => {
@@ -28,7 +28,7 @@ export default function Cluster({ i }: props) {
         ? index + 32
         : index;
 
-    return <Block key={index} i={newI} />;
+    return <Block key={index} i={newI} day={day} />;
   });
 
   return <Grid>{items}</Grid>;

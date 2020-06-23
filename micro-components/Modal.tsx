@@ -8,10 +8,12 @@ const Grid = styled.div`
   justify-items: center;
   align-content: center;
   margin-top: ${({ theme: { spacing } }) => spacing[10]};
+  padding-bottom: ${({ theme: { spacing } }) => spacing[12]};
 
   ${({ theme: { mediaQ } }) => mediaQ.desktopS} {
     height: 100vh;
     margin-top: 0;
+    padding-bottom: 0;
   }
 `;
 

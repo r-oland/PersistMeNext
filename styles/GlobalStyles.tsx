@@ -11,6 +11,7 @@ const GlobalStyles = createGlobalStyle`
    html {
       font-family: 'Raleway', sans-serif;
       background: ${({ theme: { color } }) => color.offWhite};
+      overflow-x: hidden;
 
       input, select, textarea, label{
       font-family: 'Raleway', sans-serif;

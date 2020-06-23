@@ -2,6 +2,7 @@
 import { useRouter } from "next/dist/client/router";
 import Link from "next/link";
 import styled from "styled-components";
+import ActivityPicker from "../../micro-components/ActivityPicker";
 // =========================
 
 const Wrapper = styled.div`
@@ -21,6 +22,11 @@ const Item = styled.div`
   img {
     margin: 0 auto ${({ theme: { spacing } }) => spacing[1]};
   }
+`;
+
+const ActivityWrapper = styled.div`
+  display: flex;
+  justify-content: center;
 `;
 
 type props = {};
@@ -55,5 +61,14 @@ export default function DesktopNavItems({}: props) {
     );
   });
 
-  return <Wrapper>{items}</Wrapper>;
+  return (
+    <Wrapper>
+      {items}
+      {pathname === "/week" && (
+        <ActivityWrapper>
+          <ActivityPicker />
+        </ActivityWrapper>
+      )}
+    </Wrapper>
+  );
 }
