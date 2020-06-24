@@ -16,7 +16,7 @@ const Wrapper = styled.div`
   left: 50%;
   padding: ${({ theme: { spacing } }) => `${spacing[2]} ${spacing[4]}`};
   box-shadow: ${({ theme: { shadow } }) => shadow.xs};
-  bottom: 75px;
+  bottom: 40px;
   * {
     &:last-child {
       margin-bottom: 0 !important;
@@ -40,7 +40,7 @@ export default function Modal({ setModal }: props) {
   const { setActivity } = useContext(AppContext);
 
   const modalItems = user?.activities.map(
-    (e: { activity: string; style: number }, index) => {
+    (e: { activity: string; style: number }, index: number) => {
       return (
         <Grid
           onClick={() => {

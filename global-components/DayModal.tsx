@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { useUser } from "../firebase/useUser";
-import { today, weekNumber, year } from "../micro-components/dateFormating";
+import { today } from "../micro-components/dateFormating";
 import { AppContext } from "./AppWrapper";
 // =========================
 
@@ -62,12 +62,14 @@ const Shade = styled(motion.div)`
 type props = {};
 
 export default function DayModal({}: props) {
-  const { dayModalState, setDayModalState } = useContext(AppContext);
+  const { dayModalState, setDayModalState, week, year } = useContext(
+    AppContext
+  );
 
   const { user } = useUser();
   const d = typeof dayModalState === "string" ? dayModalState : today();
-  const w = weekNumber();
-  const y = year();
+  const w = week;
+  const y = year;
 
   const setDayType = (e: string) => {
     firebase

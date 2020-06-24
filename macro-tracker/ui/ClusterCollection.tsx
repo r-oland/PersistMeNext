@@ -3,9 +3,14 @@ import styled from "styled-components";
 import Cluster from "./Cluster";
 // =========================
 
-const Wrapper = styled.div`
+type props = {
+  day?: string;
+};
+
+const Wrapper = styled.div<props>`
   display: grid;
-  grid-gap: ${({ theme: { spacing } }) => spacing[6]};
+  grid-gap: ${({ theme: { spacing }, day }) =>
+    typeof day === "string" ? spacing[5] : spacing[6]};
   justify-items: center;
 
   ${({ theme: { mediaQ } }) => mediaQ.custom(300)} {
@@ -20,14 +25,15 @@ const Wrapper = styled.div`
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 
+  ${({ theme: { mediaQ } }) => mediaQ.desktopS} {
+    grid-template-columns: ${({ day }) =>
+      typeof day === "string" && `1fr 1fr 1fr 1fr 1fr`};
+  }
+
   ${({ theme: { mediaQ } }) => mediaQ.custom(1000)} {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
 `;
-
-type props = {
-  day?: string;
-};
 
 export default function ClusterCollection({ day }: props) {
   const amount = ["", "", "", "", ""];
@@ -36,5 +42,5 @@ export default function ClusterCollection({ day }: props) {
     <Cluster key={index} i={index} day={day} />
   ));
 
-  return <Wrapper>{items}</Wrapper>;
+  return <Wrapper day={day}>{items}</Wrapper>;
 }

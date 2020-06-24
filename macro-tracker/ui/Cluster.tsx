@@ -2,14 +2,14 @@
 import styled from "styled-components";
 import Block from "./Block";
 // =========================
+type props = { i: number; day?: string };
 
-const Grid = styled.div`
+const Grid = styled.div<{ day?: string }>`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 10px 20px;
+  grid-gap: ${({ day }) =>
+    typeof day === "string" ? "10px 15px" : "10px 20px"};
 `;
-
-type props = { i: number; day?: string };
 
 export default function Cluster({ i, day }: props) {
   const amount = ["", "", "", "", "", "", "", ""];
@@ -31,5 +31,5 @@ export default function Cluster({ i, day }: props) {
     return <Block key={index} i={newI} day={day} />;
   });
 
-  return <Grid>{items}</Grid>;
+  return <Grid day={day}>{items}</Grid>;
 }

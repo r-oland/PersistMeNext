@@ -71,6 +71,6 @@ export const theme: DefaultTheme = {
     h4: fontSize(23, 25),
     h2: fontSize(28.5, 28),
     h3: fontSize(27, 35),
-    h1: fontSize(31, 45),
+    h1: fontSize(30, 40),
   },
 };

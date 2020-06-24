@@ -14,6 +14,10 @@ const Wrapper = styled.div`
 `;
 
 const Circle = styled(motion.div)`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   cursor: pointer;
   width: 50px;
   height: 50px;

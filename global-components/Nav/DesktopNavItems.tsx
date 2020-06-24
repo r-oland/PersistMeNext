@@ -25,6 +25,7 @@ const Item = styled.div`
 `;
 
 const ActivityWrapper = styled.div`
+  padding-top: ${({ theme: { spacing } }) => spacing[4]};
   display: flex;
   justify-content: center;
 `;
@@ -37,7 +38,7 @@ export default function DesktopNavItems({}: props) {
   const dailyView = pathname === "/";
   const weeklyView = pathname === "/week";
 
-  const conName = dailyView ? "Weekly" : weeklyView ? "Daily" : "Overview";
+  const conName = dailyView ? "Weekly" : weeklyView ? "Daily" : "Tracker";
   const conLink = dailyView ? "/week" : "/";
 
   const arr = [

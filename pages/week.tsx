@@ -5,10 +5,13 @@ import { useContext, useEffect } from "react";
 import styled from "styled-components";
 import { AppContext } from "../global-components/AppWrapper";
 import WeeklyView from "../macro-tracker/Weekly";
+import WeekSelector from "../macro-tracker/WeekSelector";
 import { Container } from "../styles/mixins";
 // =========================
 
-const Wrapper = styled(Container)``;
+const Wrapper = styled(Container)`
+  margin-top: ${({ theme: { spacing } }) => spacing[8]};
+`;
 
 type props = {};
 
@@ -28,6 +31,7 @@ export default function Index({}: props) {
         <title>Home</title>
       </Head>
       <Wrapper>
+        <WeekSelector />
         <WeeklyView />
       </Wrapper>
     </>

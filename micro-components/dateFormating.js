@@ -29,7 +29,7 @@ export const weekNumber = () => {
   return ISO8601_week_no(dt);
 };
 
-export const year = () => {
+export const getYear = () => {
   const todayDate = new Date();
   return todayDate.getFullYear();
 };

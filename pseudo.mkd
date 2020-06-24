@@ -21,10 +21,10 @@ add logo + link to info home page
 <!-- \*figure out a date formatting solution - day -->
 <!-- \*add database structure -->
 <!-- \*code color picker -->
+<!-- \*add week view -->
+<!-- \*add daytype selector -->
 
-\*add week view
 \*figure out a date formatting solution
-\*add daytype selector
 \*security rules
 \*day modal if isn't set
 add (ctr) clear functionality

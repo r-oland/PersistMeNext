@@ -1,7 +1,7 @@
 // Components==============
 import { useEffect, useState } from "react";
 import { dataTemplate } from "../macro-tracker/dataTemplate";
-import { weekNumber, year } from "../micro-components/dateFormating";
+import { getYear, weekNumber } from "../micro-components/dateFormating";
 import firebase from "./client";
 import { useUser } from "./useUser";
 // =========================
@@ -10,6 +10,7 @@ export function useData() {
   const { setData, user } = useUser();
   const uid = user?.uid;
   const [week, setWeek] = useState(weekNumber());
+  const [year, setYear] = useState(getYear());
 
   useEffect(() => {
     let dataUnsubscribe: any;
@@ -20,7 +21,7 @@ export function useData() {
         .collection("users")
         .doc(uid)
         .collection("data")
-        .doc(`${year()}_${week}`);
+        .doc(`${year}_${week}`);
 
       dataDoc.get().then((snapshot) => {
         if (!snapshot.exists) {
@@ -37,5 +38,5 @@ export function useData() {
     };
   }, [uid, week]);
 
-  return { week, setWeek };
+  return { week, setWeek, year, setYear };
 }

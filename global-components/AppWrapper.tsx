@@ -24,7 +24,7 @@ export const AppContext = createContext<Partial<any>>({});
 
 export default function AppWrapper({ children }: props) {
   const query = useMediaQ("min", 900);
-  const { week, setWeek } = useData();
+  const { week, setWeek, year, setYear } = useData();
   const { user } = useUser();
   const [activity, setActivity] = useState({ activity: "initial", style: 0 });
   const [dayModalState, setDayModalState] = useState(false);
@@ -43,6 +43,8 @@ export default function AppWrapper({ children }: props) {
         query,
         week,
         setWeek,
+        year,
+        setYear,
         activity,
         setActivity,
         dayModalState,
