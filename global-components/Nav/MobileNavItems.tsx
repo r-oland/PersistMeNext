@@ -2,6 +2,7 @@
 import { useRouter } from "next/dist/client/router";
 import Link from "next/link";
 import styled from "styled-components";
+import { useUser } from "../../firebase/useUser";
 import ActivityPicker from "../../micro-components/ActivityPicker";
 // =========================
 
@@ -24,9 +25,11 @@ type props = {};
 export default function MobileNavItems({}: props) {
   const { pathname } = useRouter();
 
+  const { signedIn } = useUser();
+
   return (
     <Wrapper>
-      <Link href="/progress">
+      <Link href={signedIn ? "/progress" : "/login"}>
         <a>
           <img src="/navMobile/progress.svg" alt="progress" />
         </a>
@@ -34,13 +37,13 @@ export default function MobileNavItems({}: props) {
       {pathname === "/" ? (
         <ActivityPicker />
       ) : (
-        <Link href="/">
+        <Link href={signedIn ? "/" : "/login"}>
           <a>
             <img src="/navMobile/calendar.svg" alt="progress" />
           </a>
         </Link>
       )}
-      <Link href="/settings">
+      <Link href={signedIn ? "/settings" : "/login"}>
         <a>
           <img src="/navMobile/settings.svg" alt="settings" />
         </a>

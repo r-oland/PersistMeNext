@@ -2,6 +2,7 @@
 import { useRouter } from "next/dist/client/router";
 import Link from "next/link";
 import styled from "styled-components";
+import { useUser } from "../../firebase/useUser";
 import ActivityPicker from "../../micro-components/ActivityPicker";
 // =========================
 
@@ -34,6 +35,7 @@ type props = {};
 
 export default function DesktopNavItems({}: props) {
   const { pathname } = useRouter();
+  const { signedIn } = useUser();
 
   const dailyView = pathname === "/";
   const weeklyView = pathname === "/week";
@@ -52,7 +54,7 @@ export default function DesktopNavItems({}: props) {
 
     return (
       <Item key={index}>
-        <Link href={link}>
+        <Link href={signedIn ? link : "/login"}>
           <a>
             <img src={`/navDesktop/${svg}.svg`} alt={name} />
             <p>{name}</p>

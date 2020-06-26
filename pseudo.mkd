@@ -30,14 +30,14 @@ add logo + link to info home page
 <!-- \*day modal if isn't set -->
 <!-- \*security rules -->
 
-\* full page log in and verify
 add (ctr) clear functionality
 multi selector for desktop
 optimize listener in ui (first local => update after timeout?)
 
 ## progress
 
-\*add a work in progress page
+<!-- \*add a work in progress page -->
+
 add data visualization
 add option to export
 
