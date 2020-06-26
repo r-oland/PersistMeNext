@@ -1,9 +1,9 @@
 // Components==============
-import firebase from "firebase/app";
 import { useState } from "react";
 import styled from "styled-components";
 import { useUser } from "../../firebase/useUser";
 import Buttons from "./Buttons";
+import { updateUserDoc } from "./updateUserDoc";
 // =========================
 
 const Grid = styled.div`
@@ -57,8 +57,7 @@ function Fields() {
   const handleSubmit = (e: any) => {
     e.preventDefault();
 
-    const updateUserDoc = firebase.functions().httpsCallable("updateUserDoc");
-    return updateUserDoc(formFields);
+    updateUserDoc(formFields);
   };
 
   return (

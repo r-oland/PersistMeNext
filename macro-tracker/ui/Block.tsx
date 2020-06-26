@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { useUser } from "../../firebase/useUser";
 import { AppContext } from "../../global-components/AppWrapper";
 import { today } from "../../micro-components/dateFormating";
-import { activityVariants } from "../../styles/activityStyles";
+import { leftVariants, rightVariants } from "../../styles/activityStyles";
 // =========================
 
 type wrapper = { day: string | undefined };
@@ -24,30 +24,19 @@ const Wrapper = styled(motion.div)<wrapper>`
   }
 `;
 
-const ElementWrapper = styled.div`
-  border: solid 2.5px ${({ theme: { color } }) => color.black};
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
-  position: relative;
-  cursor: pointer;
-  border-radius: 1px;
-  z-index: 3;
-`;
-
-const Element = styled(motion.div)`
+const Svg = styled.svg`
   position: absolute;
-  width: 130%;
-  height: 130%;
-  transform: translate(-15%, -15%);
-  z-index: 2;
+  width: 105%;
+  height: 105%;
+  cursor: pointer;
+  z-index: 3;
 `;
 
 const Shadow = styled(motion.div)`
   pointer-events: none;
   position: absolute;
-  left: 4px;
-  top: 4px;
+  left: 6px;
+  top: 6px;
   background: ${({ theme: { color } }) => color.gray};
   border: solid 2.5px ${({ theme: { color } }) => color.gray};
   height: 100%;
@@ -61,6 +50,7 @@ type props = { i: number; day?: string };
 type activity = {
   activity: string;
   style: number;
+  order: number;
 };
 
 export default function Block({ i, day }: props) {
@@ -104,18 +94,34 @@ export default function Block({ i, day }: props) {
       onClick={handleClick}
       day={day}
     >
+      <Svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 51.87 21.43">
+        <motion.rect
+          x="0.973"
+          y="2.0293"
+          width="49.9139"
+          height="17.3614"
+          fill="#1a1a1a"
+          variants={rightVariants}
+        />
+        <motion.polygon
+          points="50.887 19.391 0.973 19.391 0.973 2.029 50.887 19.391"
+          fill="#FFFFFF"
+          variants={leftVariants}
+        />
+        <path
+          d="M50.83,0H1.03A1.0285,1.0285,0,0,0,0,1.03V20.4a1.0285,1.0285,0,0,0,1.03,1.03h49.8a1.0371,1.0371,0,0,0,1.04-1.03V1.03A1.0371,1.0371,0,0,0,50.83,0Zm-1.9,18.71h-46v-16h46Z"
+          fill="#1a1a1a"
+        />
+      </Svg>
       <Shadow variants={shadowVariants} />
-      <ElementWrapper>
-        <Element variants={activityVariants} />
-      </ElementWrapper>
     </Wrapper>
   );
 }
 
-const shadowVariants = {
+export const shadowVariants = {
   hovering: {
-    x: -4.4,
-    y: -4,
+    x: -5,
+    y: -5,
     transition: {
       damping: 4,
     },

@@ -9,6 +9,8 @@ forgot password
 
 ## UI
 
+<!-- alternative for glitchy background gradients -->
+
 \*styling error messages login
 animations nav elements
 animations buttons
@@ -23,10 +25,10 @@ add logo + link to info home page
 <!-- \*code color picker -->
 <!-- \*add week view -->
 <!-- \*add daytype selector -->
+<!-- \*figure out a date formatting solution -->
+<!-- \*day modal if isn't set -->
+<!-- \*security rules -->
 
-\*figure out a date formatting solution
-\*security rules
-\*day modal if isn't set
 add (ctr) clear functionality
 multi selector for desktop
 optimize listener in ui (first local => update after timeout?)
@@ -46,6 +48,8 @@ add dark theme toggle
 amount of blocks
 
 ## general
+
+<!-- \*Change function to front-end calls -->
 
 \*Google lighthouse
 add informational home page

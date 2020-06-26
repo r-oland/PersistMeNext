@@ -42,6 +42,11 @@ export default function AddActivity({}: props) {
     setFormValue(e.target.value);
   };
 
+  let orderArr: number[] = [];
+  user?.activities.forEach((r: { order: number }) => orderArr.push(r?.order));
+
+  const hightesNumber = Math.max.apply(null, orderArr) + 1;
+
   const addActivity = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setShowFields(false);
@@ -51,9 +56,10 @@ export default function AddActivity({}: props) {
       .collection("users")
       .doc(user?.uid)
       .update({
-        [`activities.${formValue}`]: {
+        [`activities.${hightesNumber}`]: {
           activity: formValue,
           style: blockStyle,
+          order: hightesNumber,
         },
       });
   };

@@ -7,23 +7,46 @@ export const activityStyles = [
   "style5",
 ];
 
-export const activityVariants = {
+export const activityVariants = {};
+
+export const leftVariants = {
   initial: {
-    backgroundImage: "linear-gradient(18deg, #FFFFFF 50%,  #FFFFFF 0%)",
+    fill: "#FFFFFF",
   },
   style1: {
-    backgroundImage: "linear-gradient(18deg, #FDC61A 50%,  #FDC61A 0%)",
+    fill: "#FDC61A",
   },
   style2: {
-    backgroundImage: "linear-gradient(18deg, #343434 50%,  #343434 0%)",
+    fill: "#343434",
   },
   style3: {
-    backgroundImage: "linear-gradient(18deg, #FDC61A 50%,  #FFFFFF 0%)",
+    fill: "#343434",
   },
   style4: {
-    backgroundImage: "linear-gradient(18deg, #FDC61A 50%,  #343434 0%)",
+    fill: "#FDC61A",
   },
   style5: {
-    backgroundImage: "linear-gradient(18deg, #FFFFFF 50%,  #343434 0%)",
+    fill: "#343434",
+  },
+};
+
+export const rightVariants = {
+  initial: {
+    fill: "#FFFFFF",
+  },
+  style1: {
+    fill: "#FDC61A",
+  },
+  style2: {
+    fill: "#343434",
+  },
+  style3: {
+    fill: "#FDC61A",
+  },
+  style4: {
+    fill: "#FFFFFF",
+  },
+  style5: {
+    fill: "#FFFFFF",
   },
 };

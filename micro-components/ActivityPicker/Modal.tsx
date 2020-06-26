@@ -40,7 +40,7 @@ export default function Modal({ setModal }: props) {
   const { setActivity } = useContext(AppContext);
 
   const modalItems = user?.activities.map(
-    (e: { activity: string; style: number }, index: number) => {
+    (e: { activity: string; style: number; order: number }, index: number) => {
       return (
         <Grid
           onClick={() => {

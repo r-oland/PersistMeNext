@@ -59,7 +59,8 @@ export default function UserContextComp({ children }: props) {
                   return r[1];
                 }),
               activities: Object.entries(activities)
-                .sort()
+                .sort((a: any, b: any) => b - a)
+                .reverse()
                 .map((r) => {
                   return r[1];
                 }),

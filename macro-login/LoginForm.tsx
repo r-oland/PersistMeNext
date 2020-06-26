@@ -1,10 +1,19 @@
 // Components==============
 import firebase from "firebase/app";
 import { useState } from "react";
+import styled from "styled-components";
 import { useUser } from "../firebase/useUser";
 import { Button } from "../styles/mixins";
 import { Form } from "./FormStyling";
 // =========================
+
+const Error = styled.p`
+  color: red;
+  font-weight: ${({ theme: { fontWeight } }) => fontWeight.semiBold};
+  ${({ theme: { fontSize } }) => fontSize.s}
+  margin-bottom: ${({ theme: { spacing } }) => spacing[4]};
+  opacity: 0.9;
+`;
 
 type props = {};
 
@@ -36,7 +45,6 @@ export default function LoginForm({}: props) {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <p>{error}</p>
       <label>Email</label>
       <input
         value={formValues.email}
@@ -55,6 +63,7 @@ export default function LoginForm({}: props) {
         onChange={handleInputChange}
         required
       />
+      <Error>{error}</Error>
       <Button type="submit">login</Button>
     </Form>
   );

@@ -16,6 +16,7 @@ type activity = {
   activity: {
     activity: string;
     style: number;
+    order: number;
   };
 };
 
@@ -87,7 +88,8 @@ export default function Activities({}: props) {
 
   const activities = user?.activities.map((e: any, index: number) => {
     const activityNumber = Object.entries(user?.completeActivities)
-      .sort()
+      .sort((a: any, b: any) => a - b)
+      .reverse()
       .map((r) => {
         return r[0];
       })[index];

@@ -1,12 +1,22 @@
 // Components==============
 import firebase from "firebase/app";
 import { useState } from "react";
+import styled from "styled-components";
 import { useUser } from "../firebase/useUser";
 import { Button } from "../styles/mixins";
+import { createUserDoc } from "./createUserDoc";
 import { Form } from "./FormStyling";
 // =========================
 
 type props = {};
+
+const Error = styled.p`
+  color: red;
+  font-weight: ${({ theme: { fontWeight } }) => fontWeight.semiBold};
+  ${({ theme: { fontSize } }) => fontSize.s}
+  margin-bottom: ${({ theme: { spacing } }) => spacing[4]};
+  opacity: 0.9;
+`;
 
 export default function RegisterForm({}: props) {
   const [formValues, setformValues] = useState({
@@ -15,9 +25,9 @@ export default function RegisterForm({}: props) {
     confirmPassword: "",
     name: "",
     activities: {
-      activity1: { activity: "work", style: 1 },
-      activity2: { activity: "exercise", style: 2 },
-      activity3: { activity: "music", style: 3 },
+      activity1: { activity: "work", style: 1, order: 1 },
+      activity2: { activity: "exercise", style: 2, order: 2 },
+      activity3: { activity: "music", style: 3, order: 3 },
     },
     dayTypes: {
       type1: "Workday",
@@ -36,11 +46,8 @@ export default function RegisterForm({}: props) {
       firebase
         .auth()
         .createUserWithEmailAndPassword(formValues.email, formValues.password)
-        .then(() => {
-          const createUserDoc = firebase
-            .functions()
-            .httpsCallable("createUserDoc");
-          return createUserDoc(formValues);
+        .then((r) => {
+          return createUserDoc(formValues, r.user?.uid);
         })
         .catch((error) => setError(error.message));
     } else {
@@ -60,7 +67,6 @@ export default function RegisterForm({}: props) {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <p>{error}</p>
       <label>Name</label>
       <input
         value={formValues.name}
@@ -99,6 +105,7 @@ export default function RegisterForm({}: props) {
         required
         minLength={6}
       />
+      <Error>{error}</Error>
       <Button type="submit">Register</Button>
     </Form>
   );
