@@ -3,6 +3,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import { useUser } from "../../firebase/useUser";
 import Buttons from "./Buttons";
+import ResetPassword from "./ResetPassword";
 import { updateUserDoc } from "./updateUserDoc";
 // =========================
 
@@ -21,9 +22,17 @@ const Grid = styled.div`
   }
 `;
 
+const Error = styled.p`
+  color: red;
+  font-weight: ${({ theme: { fontWeight } }) => fontWeight.semiBold};
+  ${({ theme: { fontSize } }) => fontSize.s}
+  opacity: 0.9;
+`;
+
 function Fields() {
   const { user } = useUser();
   const [saveBtn, setSaveBtn] = useState(false);
+  const [error, setError] = useState("");
 
   const fields = ["name", "email"];
   const [formFields, setFormFields]: any = useState({
@@ -38,6 +47,7 @@ function Fields() {
     const value = e.target.value;
 
     setSaveBtn(true);
+    setError("");
     setFormFields((prev: any) => ({ ...prev, [field]: value }));
   };
 
@@ -57,12 +67,14 @@ function Fields() {
   const handleSubmit = (e: any) => {
     e.preventDefault();
 
-    updateUserDoc(formFields);
+    updateUserDoc(formFields, setError, user?.name);
   };
 
   return (
     <form onSubmit={handleSubmit}>
       {inputItems}
+      <ResetPassword setError={setError} />
+      <Error>{error}</Error>
       <Buttons saveBtn={saveBtn} setSaveBtn={setSaveBtn} />
     </form>
   );

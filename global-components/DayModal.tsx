@@ -66,7 +66,7 @@ export default function DayModal({}: props) {
     AppContext
   );
 
-  const { user } = useUser();
+  const { user, isVerified } = useUser();
   const d = typeof dayModalState === "string" ? dayModalState : today();
   const w = week;
   const y = year;
@@ -96,8 +96,16 @@ export default function DayModal({}: props) {
     <motion.div animate="mount" initial="unMounted" exit="unMounted">
       <Shade onClick={() => setDayModalState(false)} variants={shadeVariants} />
       <Modal variants={modalVariants}>
-        <h4>Today is a</h4>
-        {dayTypes}
+        {isVerified ? (
+          <>
+            <h4>Today is a</h4>
+            {dayTypes}
+          </>
+        ) : (
+          <p style={{ textAlign: "center" }}>
+            Please check your mailbox and verify your account.
+          </p>
+        )}
       </Modal>
     </motion.div>
   );

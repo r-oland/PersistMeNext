@@ -25,9 +25,9 @@ export default function RegisterForm({}: props) {
     confirmPassword: "",
     name: "",
     activities: {
-      activity1: { activity: "work", style: 1, order: 1 },
-      activity2: { activity: "exercise", style: 2, order: 2 },
-      activity3: { activity: "music", style: 3, order: 3 },
+      1: { activity: "work", style: 1, order: 1 },
+      2: { activity: "exercise", style: 2, order: 2 },
+      3: { activity: "music", style: 3, order: 3 },
     },
     dayTypes: {
       type1: "Workday",
@@ -46,9 +46,8 @@ export default function RegisterForm({}: props) {
       firebase
         .auth()
         .createUserWithEmailAndPassword(formValues.email, formValues.password)
-        .then((r) => {
-          return createUserDoc(formValues, r.user?.uid);
-        })
+        .then((r) => createUserDoc(formValues, r.user?.uid))
+        .then(() => firebase.auth().currentUser?.sendEmailVerification())
         .catch((error) => setError(error.message));
     } else {
       setError("The passwords do not match");

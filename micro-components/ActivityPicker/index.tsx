@@ -14,7 +14,7 @@ import Modal from "./Modal";
 
 const Wrapper = styled.div`
   position: relative;
-  z-index: 1000;
+  z-index: 299;
 `;
 
 const Circle = styled(motion.svg)`

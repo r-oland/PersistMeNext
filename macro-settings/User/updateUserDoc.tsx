@@ -1,32 +1,38 @@
 import firebase from "firebase/app";
 
-export const updateUserDoc = async (data: {
-  name: string;
-  email: string;
-  uid: string;
-}) => {
+export const updateUserDoc = async (
+  data: {
+    name: string;
+    email: string;
+    uid: string;
+  },
+  setError: any,
+  currentName: string | undefined
+) => {
   const { name, email, uid } = data;
+  const user = firebase.auth();
+  const currentEmail = user.currentUser?.email;
 
   try {
-    if (uid === firebase.auth().currentUser?.uid) {
+    if (uid === user.currentUser?.uid) {
       const snapshot = await firebase
         .firestore()
         .collection("users")
         .where("userId", "==", uid)
         .get();
 
-      snapshot.forEach((doc) => {
-        doc.ref.update({ name, email });
-      });
-
-      const user = firebase.auth();
-      const currentEmail = user.currentUser?.email;
+      if (name !== currentName) {
+        snapshot.forEach((doc) => doc.ref.update({ name }));
+      }
 
       if (email !== currentEmail) {
-        user.currentUser?.updateEmail(email);
+        user.currentUser
+          ?.updateEmail(email)
+          .then(() => snapshot.forEach((doc) => doc.ref.update({ email })))
+          .catch((err) => setError(err.message));
       }
     }
   } catch (error) {
-    console.log(error);
+    setError(error);
   }
 };

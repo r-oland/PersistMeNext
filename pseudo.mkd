@@ -1,17 +1,18 @@
 ## auth
 
-\*Validate if user exists on email update
-\*change password
-\*security rules
-\*Confirmation email
+<!-- \*Validate if user exists on email update -->
+<!-- \*change password -->
+<!-- \*security rules -->
+<!-- \*Confirmation email -->
+
 third party log in services
 forgot password
 
 ## UI
 
 <!-- alternative for glitchy background gradients -->
+<!-- \*styling error messages login -->
 
-\*styling error messages login
 animations nav elements
 animations buttons
 add a dark theme
@@ -29,6 +30,7 @@ add logo + link to info home page
 <!-- \*day modal if isn't set -->
 <!-- \*security rules -->
 
+\* full page log in and verify
 add (ctr) clear functionality
 multi selector for desktop
 optimize listener in ui (first local => update after timeout?)

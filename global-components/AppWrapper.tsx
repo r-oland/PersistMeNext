@@ -26,14 +26,14 @@ export const AppContext = createContext<Partial<any>>({});
 export default function AppWrapper({ children }: props) {
   const query = useMediaQ("min", 900);
   const { week, setWeek, year, setYear } = useData();
-  const { user, data } = useUser();
+  const { user, data, isVerified, signedIn } = useUser();
   const [activity, setActivity] = useState({ activity: "initial", style: 0 });
   const [dayModalState, setDayModalState] = useState(false);
   const dragRef = useRef(null!);
   const todaysDayType = data && data[today()].dayType;
 
   useEffect(() => {
-    if (todaysDayType === "unset") {
+    if (todaysDayType === "unset" || (!isVerified && signedIn)) {
       setDayModalState(true);
     }
   }, [todaysDayType]);

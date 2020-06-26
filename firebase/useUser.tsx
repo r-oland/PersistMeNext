@@ -19,6 +19,7 @@ type contextProps = {
   setData: any;
   loadingUser: boolean;
   signedIn: boolean;
+  isVerified: boolean;
 };
 
 type props = {
@@ -30,6 +31,7 @@ export const UserContext = createContext<Partial<contextProps>>({});
 export default function UserContextComp({ children }: props) {
   const [user, setUser] = useState<user | null>(null);
   const [signedIn, setSignedIn] = useState(false);
+  const [isVerified, setIsVerified] = useState(false);
   const [data, setData] = useState(null);
   const [loadingUser, setLoadingUser] = useState(true); // Helpful, to update the UI accordingly.
 
@@ -42,6 +44,7 @@ export default function UserContextComp({ children }: props) {
         if (user) {
           // User is signed in.
           setSignedIn(true);
+          setIsVerified(user.emailVerified);
           const { uid, email } = user;
 
           userUnsubscribe = getUserProfile(uid, (r) => {
@@ -89,7 +92,15 @@ export default function UserContextComp({ children }: props) {
 
   return (
     <UserContext.Provider
-      value={{ user, data, setData, setUser, loadingUser, signedIn }}
+      value={{
+        user,
+        data,
+        setData,
+        setUser,
+        loadingUser,
+        signedIn,
+        isVerified,
+      }}
     >
       {children}
     </UserContext.Provider>
