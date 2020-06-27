@@ -36,8 +36,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           // User rejected, new verion will be automatically load when user open the app next time.
         }
       });
-
-      window.workbox.register();
     }
   }, []);
 
