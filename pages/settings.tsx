@@ -42,7 +42,7 @@ export default function settings({}: props) {
           <User />
           <SubTitle>Activities</SubTitle>
           <Activities />
-          <SubTitle>Day-types</SubTitle>
+          <SubTitle>Day types</SubTitle>
           <DayTypes />
         </Modal>
       </Wrapper>
