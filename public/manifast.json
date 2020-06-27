@@ -1,0 +1,21 @@
+{
+  "name": "PersiteMe",
+  "short_name": "PersistMe",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#FDC61A",
+  "background_color": "#FDC61A",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "/icons/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
