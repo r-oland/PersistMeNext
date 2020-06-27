@@ -26,7 +26,7 @@ export default function progress({}: props) {
   return (
     <>
       <Head>
-        <title>Home</title>
+        <title>Progress</title>
         <meta name="description" content="Overview of data" />
       </Head>
       <Wrapper>

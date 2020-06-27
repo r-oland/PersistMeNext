@@ -32,7 +32,7 @@ export default function settings({}: props) {
   return (
     <>
       <Head>
-        <title>Home</title>
+        <title>Settings</title>
         <meta name="description" content="PersistMe settings" />
       </Head>
       <Wrapper>

@@ -28,7 +28,7 @@ export default function Index({}: props) {
   return (
     <>
       <Head>
-        <title>Home</title>
+        <title>Week view</title>
         <meta name="author" content="Weekly overview of data" />
       </Head>
       <Wrapper>
