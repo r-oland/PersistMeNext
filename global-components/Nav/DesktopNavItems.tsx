@@ -40,7 +40,7 @@ export default function DesktopNavItems({}: props) {
   const dailyView = pathname === "/";
   const weeklyView = pathname === "/week";
 
-  const conName = dailyView ? "Week" : weeklyView ? "Day" : "Tracker";
+  const conName = dailyView ? "Weekly" : weeklyView ? "Daily" : "Tracker";
   const conLink = dailyView ? "/week" : "/";
 
   const arr = [
