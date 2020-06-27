@@ -88,8 +88,7 @@ export default function Activities({}: props) {
 
   const activities = user?.activities.map((e: any, index: number) => {
     const activityNumber = Object.entries(user?.completeActivities)
-      .sort((a: any, b: any) => a - b)
-      .reverse()
+      .sort((a: any, b: any) => (a % 2) - (b % 2) || a - b)
       .map((r) => {
         return r[0];
       })[index];
