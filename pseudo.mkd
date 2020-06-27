@@ -52,7 +52,9 @@ amount of blocks
 ## general
 
 <!-- \*Change function to front-end calls -->
+<!-- \*Workday bug on prev / next page -->
 
+\*Deploy
 \*Google lighthouse
 add informational home page
 add payment feature

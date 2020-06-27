@@ -2,7 +2,7 @@ import { createContext, useEffect, useRef, useState } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import { useData } from "../firebase/useData";
 import { useUser } from "../firebase/useUser";
-import { today } from "../micro-components/dateFormating";
+import { today, weekNumber } from "../micro-components/dateFormating";
 import { useMediaQ } from "../micro-components/useMediaQ";
 import GlobalStyles from "../styles/GlobalStyles";
 import { theme } from "../styles/theme";
@@ -33,7 +33,10 @@ export default function AppWrapper({ children }: props) {
   const todaysDayType = data && data[today()].dayType;
 
   useEffect(() => {
-    if (todaysDayType === "unset" || (!isVerified && signedIn)) {
+    if (
+      (todaysDayType === "unset" && data.week === weekNumber()) ||
+      (!isVerified && signedIn)
+    ) {
       setDayModalState(true);
     }
   }, [todaysDayType]);
