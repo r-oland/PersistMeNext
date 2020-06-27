@@ -61,6 +61,7 @@ export default function LoginForm({}: props) {
         type="password"
         name="password"
         id="password"
+        autoComplete="on"
         placeholder="********"
         onChange={handleInputChange}
         required

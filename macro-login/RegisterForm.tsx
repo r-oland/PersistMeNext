@@ -93,6 +93,7 @@ export default function RegisterForm({}: props) {
         name="password"
         id="password"
         placeholder="********"
+        autoComplete="on"
         onChange={handleInputChange}
         required
         minLength={6}
@@ -103,6 +104,7 @@ export default function RegisterForm({}: props) {
         type="password"
         name="confirmPassword"
         id="confirmPassword"
+        autoComplete="on"
         placeholder="********"
         onChange={handleInputChange}
         required
