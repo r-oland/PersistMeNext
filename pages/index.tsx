@@ -26,6 +26,10 @@ export default function Index({}: props) {
     <>
       <Head>
         <title>Home</title>
+        <meta
+          name="description"
+          content="Time management for the activities that matters"
+        />
       </Head>
       <Wrapper>
         <DailyView />

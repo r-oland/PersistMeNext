@@ -45,20 +45,22 @@ export default function LoginForm({}: props) {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <label>Email</label>
+      <label htmlFor="email">Email</label>
       <input
         value={formValues.email}
         type="email"
         name="email"
+        id="email"
         placeholder="myemail@example.com"
         onChange={handleInputChange}
         required
       />
-      <label>Password</label>
+      <label htmlFor="password">Password</label>
       <input
         value={formValues.password}
         type="password"
         name="password"
+        id="password"
         placeholder="********"
         onChange={handleInputChange}
         required

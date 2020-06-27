@@ -54,11 +54,12 @@ function Fields() {
   const inputItems = fields.map((field, index) => {
     return (
       <Grid key={index}>
-        <label>{field}:</label>
+        <label htmlFor={field}>{field}:</label>
         <input
           value={formFields[field]}
           onChange={handleInputChange}
           name={field}
+          id={field}
         />
       </Grid>
     );

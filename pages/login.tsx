@@ -26,6 +26,7 @@ export default function login({}: props) {
     <>
       <Head>
         <title>Home</title>
+        <meta name="description" content="Login to persistMe" />
       </Head>
       <Wrapper>
         <AuthComp />

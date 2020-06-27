@@ -13,6 +13,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
             rel="stylesheet"
           />
           <link rel="shortcut icon" href="/icon/favicon.ico" />
+          <meta name="author" content="Roland Branten"></meta>
         </Head>
         <Component {...pageProps} />
       </AppWrapper>

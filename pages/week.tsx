@@ -29,6 +29,7 @@ export default function Index({}: props) {
     <>
       <Head>
         <title>Home</title>
+        <meta name="author" content="Weekly overview of data" />
       </Head>
       <Wrapper>
         <WeekSelector />

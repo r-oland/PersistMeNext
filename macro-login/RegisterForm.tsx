@@ -66,39 +66,43 @@ export default function RegisterForm({}: props) {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <label>Name</label>
+      <label htmlFor="name">Name</label>
       <input
         value={formValues.name}
         type="name"
         name="name"
+        id="name"
         placeholder="Jon"
         onChange={handleInputChange}
         required
       />
-      <label>Email</label>
+      <label htmlFor="email">Email</label>
       <input
         value={formValues.email}
         type="email"
         name="email"
+        id="email"
         placeholder="Jon@example.com"
         onChange={handleInputChange}
         required
       />
-      <label>Password</label>
+      <label htmlFor="password">Password</label>
       <input
         value={formValues.password}
         type="password"
         name="password"
+        id="password"
         placeholder="********"
         onChange={handleInputChange}
         required
         minLength={6}
       />
-      <label>Confirm password</label>
+      <label htmlFor="confirmPassword">Confirm password</label>
       <input
         value={formValues.confirmPassword}
         type="password"
         name="confirmPassword"
+        id="confirmPassword"
         placeholder="********"
         onChange={handleInputChange}
         required
