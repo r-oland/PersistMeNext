@@ -65,6 +65,12 @@ export default class MyDocument extends Document {
           />
           <link rel="manifest" href="/manifest.json" />
           <link rel="shortcut icon" href="/icons/favicon.ico" />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap"
+            rel="stylesheet"
+          />
+          <link rel="shortcut icon" href="/icons/favicon.ico" />
+          <meta name="author" content="Roland Branten"></meta>
         </Head>
         <body>
           <Main />
