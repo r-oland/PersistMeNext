@@ -7,7 +7,7 @@ import Document, {
 } from "next/document";
 import { ServerStyleSheet } from "styled-components";
 
-const APP_NAME: string = "PersitMe";
+const APP_NAME: string = "PersistMe";
 const APP_DESCRIPTION: string =
   "A time management app for the activities that matter";
 
