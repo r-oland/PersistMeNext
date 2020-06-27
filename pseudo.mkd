@@ -13,6 +13,7 @@ forgot password
 <!-- alternative for glitchy background gradients -->
 <!-- \*styling error messages login -->
 
+\* fix form bug settings chrome
 animations nav elements
 animations buttons
 add a dark theme
@@ -53,8 +54,9 @@ amount of blocks
 
 <!-- \*Change function to front-end calls -->
 <!-- \*Workday bug on prev / next page -->
+<!-- \*Deploy -->
+<!-- \*Google lighthouse -->
 
-\*Deploy
-\*Google lighthouse
+\* Add install button
 add informational home page
 add payment feature

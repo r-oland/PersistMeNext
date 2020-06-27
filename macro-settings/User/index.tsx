@@ -15,6 +15,10 @@ const Grid = styled.div`
   input {
     background: none;
     border: none;
+
+    ${({ theme: { mediaQ } }) => mediaQ.desktopS} {
+      width: 70%;
+    }
   }
 
   label {
