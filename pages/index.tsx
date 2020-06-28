@@ -25,7 +25,7 @@ export default function Index({}: props) {
   return (
     <>
       <Head>
-        <title>Day view</title>
+        <title>Day-view</title>
         <meta
           name="description"
           content="Time management for the activities that matters"
