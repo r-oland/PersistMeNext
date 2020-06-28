@@ -32,7 +32,6 @@ export default function Index({}: props) {
         />
       </Head>
       <Wrapper>
-        <p>service worker test</p>
         <DailyView />
         <ActivityPicker className="desktop" />
       </Wrapper>
