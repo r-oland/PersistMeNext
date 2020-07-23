@@ -1,6 +1,7 @@
 // Components==============
 import { motion } from "framer-motion";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useClient, useOnClickOutside } from "hooks-lib";
+import { useContext, useRef, useState } from "react";
 import styled from "styled-components";
 import { AppContext } from "../../global-components/AppWrapper";
 import {
@@ -8,8 +9,8 @@ import {
   leftVariants,
   rightVariants,
 } from "../../styles/activityStyles";
-import { useOnClickOutside } from "../useOnClickOutside";
 import Modal from "./Modal";
+
 // =========================
 
 const Wrapper = styled.div`
@@ -32,18 +33,15 @@ type props = { className?: string };
 export default function ActivityPicker({ className }: props) {
   const { activity, dragRef, query } = useContext(AppContext);
   const [modal, setModal] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
 
   const ref = useRef(null!);
   useOnClickOutside(ref, () => setModal(false), modal);
 
-  useEffect(() => {
-    setIsMobile(query);
-  }, [query]);
+  const { isClient } = useClient();
 
   return (
     <Wrapper className={className} ref={ref}>
-      <motion.div drag={isMobile} dragConstraints={dragRef}>
+      <motion.div drag={query && isClient} dragConstraints={dragRef}>
         {modal && <Modal setModal={setModal} />}
 
         <Circle

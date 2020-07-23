@@ -1,9 +1,9 @@
 // Components==============
+import { useOnClickOutside } from "hooks-lib";
 import { useRef, useState } from "react";
 import styled from "styled-components";
 import { useUser } from "../../firebase/useUser";
 import Block from "../../micro-components/Block";
-import { useOnClickOutside } from "../../micro-components/useOnClickOutside";
 import AddActivity from "./AddActivity";
 import { deleteActivity } from "./deleteActivity";
 import StylePicker from "./StylePicker";

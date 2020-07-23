@@ -8,6 +8,7 @@ import { today } from "../micro-components/dateFormating";
 
 const Wrapper = styled.div`
   margin-bottom: ${({ theme: { spacing } }) => spacing[5]};
+  height: 23.8px;
 `;
 
 const Flex = styled.div`

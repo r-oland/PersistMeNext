@@ -24,8 +24,8 @@ const GlobalStyles = createGlobalStyle`
       color: ${({ theme: { color } }) => color.black};
    }
 
-   #gatsby-focus-wrapper{
-      position: relative;
+   #__next, body, html {
+     height: 100%; 
    }
 
    svg{

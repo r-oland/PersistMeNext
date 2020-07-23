@@ -1,9 +1,11 @@
+import { useMediaQ } from "hooks-lib";
+import { useRouter } from "next/dist/client/router";
 import { createContext, useEffect, useRef, useState } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import { useData } from "../firebase/useData";
 import { useUser } from "../firebase/useUser";
 import { today, weekNumber } from "../micro-components/dateFormating";
-import { useMediaQ } from "../micro-components/useMediaQ";
+import Loader from "../micro-components/Loader";
 import GlobalStyles from "../styles/GlobalStyles";
 import { theme } from "../styles/theme";
 import Layout from "./Layout";
@@ -25,8 +27,9 @@ export const AppContext = createContext<Partial<any>>({});
 
 export default function AppWrapper({ children }: props) {
   const query = useMediaQ("min", 900);
+  const { pathname } = useRouter();
   const { week, setWeek, year, setYear } = useData();
-  const { user, data, isVerified, signedIn } = useUser();
+  const { user, data, isVerified, signedIn, loadingUser } = useUser();
   const [activity, setActivity] = useState({ activity: "initial", style: 0 });
   const [dayModalState, setDayModalState] = useState(false);
   const dragRef = useRef(null!);
@@ -64,7 +67,13 @@ export default function AppWrapper({ children }: props) {
     >
       <ThemeProvider theme={theme}>
         <Ref ref={dragRef} />
-        <Layout>{children}</Layout>
+        <Layout>
+          {(pathname === "/login" && !loadingUser) || user ? (
+            children
+          ) : (
+            <Loader />
+          )}
+        </Layout>
         <GlobalStyles />
       </ThemeProvider>
     </AppContext.Provider>

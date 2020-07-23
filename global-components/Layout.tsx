@@ -8,6 +8,8 @@ import DayModal from "./DayModal";
 import Nav from "./Nav";
 
 const Wrapper = styled.div`
+  height: 100%;
+
   ${({ theme: { mediaQ } }) => mediaQ.desktopS} {
     position: relative;
     width: ${({ theme: { spacing } }) => `calc(100vw - ${spacing[13]})`};
@@ -35,7 +37,6 @@ export default function Layout({ children }: props) {
     <Wrapper>
       <AnimatePresence>{dayModalState && <DayModal />}</AnimatePresence>
       <Nav />
-
       {children}
     </Wrapper>
   );
