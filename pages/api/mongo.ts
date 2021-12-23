@@ -9,7 +9,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   async function run() {
     try {
       await client.connect();
-      const database = client.db('newDB');
+      const database = client.db(process.env.MONGODB_DB!);
       const collection = database.collection('newCollection');
 
       if (req.method === 'GET') {
