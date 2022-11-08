@@ -20,7 +20,7 @@
     "framer-motion": "^1.9.1",
     "hooks-lib": "^1.0.19",
     "mongodb": "^4.2.2",
-    "next": "9.4.4",
+    "next": "13.0.2",
     "next-pwa": "^3.0.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
